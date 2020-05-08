@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-sm-2" style="padding: 5px;">
+		<table class="table" style="border: 1px solid lightgray;">
+			<thead>
+				<tr class="active">
+					<th>記事ランキング</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @post_ranks.each_with_index do |post_rank, i| %>
+				<tr style="border-top: 1px solid lightgray;">
+					<td><%= i + 1 %>: <%= link_to post_rank.title, post_path(post_rank) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<table class="table" style="border: 1px solid lightgray; margin-top: 20px;">
+			<thead>
+				<tr class="active">
+					<th>人気クリエイター</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @users.each_with_index do |user, i| %>
+				<tr style="border-top: 1px solid lightgray;">
+					<td><%= i + 1 %>: <%= link_to user.name, user_path(user) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-sm-7">
+		<div class="row">
+
+		<% @posts.each do |post| %>
+			<div class="col-sm-4" style="padding: 5px;">
+				<%= link_to post_path(post) do %>
+					<div class="post" style="height: 200px; border: 1px solid lightgray;">
+						<div class="post-image" style="height: 60%;">
+							<%= attachment_image_tag post, :image, :fill, 220, 120, format: "jpeg" %>
+						</div>
+						<div class="detail" style="padding: 10px;">
+							<h4><%= post.title %></h4>
+							<div class="footer">
+								<%= post.created_at %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+
+		</div>
+	</div>
+	<div class="col-sm-3" style="padding: 5px;">
+		<div class="category-list" style="border: 1px solid lightgray;">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="active">条件</th>
+					</tr>
+				</thead>
+				<tbody style="border-top: 1px solid lightgray;">
+					<tr>
+						<td>data</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
