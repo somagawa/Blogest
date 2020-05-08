@@ -6,13 +6,18 @@
 	<div class="detail" style="padding: 20px;">
 		<h4><%= @post.title %></h4>
 		<p>
-
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+			<%= @post.likes.count %>
 			　<%= @post.created_at %>
 		</p>
 		<div class="post-body" style="margin-bottom: 40px;">
 			<%= @post.body %>
 		</div>
+		<div class="post-footer" id="like-<%= @post.id %>">
 
+			<%= render "like", post: @post %>
+
+		</div>
 		<div class="creater-detail" style="border-top: 1px solid gray">
 			<table class="table" style="margin-top: 20px;">
 				<tr>

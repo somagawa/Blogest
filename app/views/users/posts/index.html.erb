@@ -9,8 +9,10 @@
 					</div>
 					<div class="detail" style="padding: 10px;">
 						<h5><%= post.title %></h5>
-						<div class="footer">
-							<%= post.created_at %>
+						<div class="footer" id="like-<%= post.id %>">
+
+							<%= render "like", post: post %>
+
 						</div>
 					</div>
 				</div>

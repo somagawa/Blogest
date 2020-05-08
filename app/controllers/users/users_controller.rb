@@ -4,8 +4,13 @@ class Users::UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
-    @posts = @user.posts
+    @user = User.find(params[:id])
+    if params[:tab] == "いいね"
+      @posts = @user.like_posts
+      @tab = "いいね"
+    else
+      @posts = @user.posts
+    end
   end
 
   def edit

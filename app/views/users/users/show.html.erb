@@ -14,10 +14,17 @@
 	</table>
 
 	<ul class="nav nav-tabs nav-justified">
-		<li role="presentation" class="active"><a href="#">記事一覧</a></li>
-		<li role="presentation"><a href="#">いいね</a></li>
-		<li role="presentation"><a href="#">フォロー</a></li>
-		<li role="presentation"><a href="#">フォロワー</a></li>
+		<% if @tab == "いいね" %>
+			<li role="presentation"><%= link_to "記事一覧", user_path(@user) %></li>
+			<li role="presentation" class="active"><%= link_to "いいね", user_path(id: @user.id, tab: "いいね") %></li>
+			<li role="presentation"><a href="#">フォロー</a></li>
+			<li role="presentation"><a href="#">フォロワー</a></li>
+		<% else %>
+			<li role="presentation" class="active"><%= link_to "記事一覧", user_path(@user) %></li>
+			<li role="presentation"><%= link_to "いいね", user_path(id: @user.id, tab: "いいね") %></li>
+			<li role="presentation"><a href="#">フォロー</a></li>
+			<li role="presentation"><a href="#">フォロワー</a></li>
+		<% end %>
 	</ul>
 
 	<div class="row" style="padding: 15px;">
@@ -30,8 +37,10 @@
 					</div>
 					<div class="detail" style="padding: 10px;">
 						<h4><%= post.title %></h4>
-						<div class="footer">
-							<%= post.created_at %>
+						<div class="footer" id="like-<%= post.id %>">
+
+							<%= render "users/posts/like", post: post %>
+
 						</div>
 					</div>
 				</div>
