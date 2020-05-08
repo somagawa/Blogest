@@ -1,0 +1,16 @@
+<div class="users_list">
+<% @users.each do |user| %>
+	<table class="table">
+		<tr>
+			<td rowspan="2"><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg", size: "60x60" %></td>
+			<td><%= user.name %></td>
+			<td></td>
+			<td rowspan="2"><%= link_to "削除", "#", class: "btn btn-danger" %></td>
+		</tr>
+		<tr>
+			<td>フォロワー　0</td>
+			<td>フォロー　0</td>
+		</tr>
+	</table>
+<% end %>
+</div>
