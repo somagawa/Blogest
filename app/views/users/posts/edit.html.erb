@@ -1,0 +1,16 @@
+<div class="new-post" style="max-width: 700px; padding: 20px; border: 0.1px solid lightgray;">
+
+<% if @post.errors.any? %>
+	<% @post.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	<% end %>
+<% end %>
+<%= form_with model: @post, local: true do |f| %>
+	<%= f.text_field :title, class: "form-control", placeholder: "タイトル", style: "margin-bottom: 20px;" %>
+	<%= f.text_area :body, class: "form-control", placeholder: "本文", style: "margin-bottom: 20px; height: 400px;" %>
+	<%= f.attachment_field :image, style: "margin-bottom: 20px;" %>
+	<div class="text-right">
+		<%= f.submit "編集", class: "btn btn-primary" %>
+	</div>
+<% end %>
+</div>
