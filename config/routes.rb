@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   scope module: :users do
   	get 'users/destroy_page'
   	resources :users, only: [:index, :show, :edit, :update]
-  	resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-  		resource :comments, only: [:create, :destroy]
-  		resource :likes, only: [:create, :destroy]
+  	resources :posts, only: [:index, :new, :create, :show, :edit, :update, :destroy], shallow: true do
+  		resources :comments, only: [:create, :destroy]
+  		resources :likes, only: [:create, :destroy]
   	end
   end
 
