@@ -8,7 +8,7 @@
 		<p>
 			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
 			<%= @post.likes.count %>
-			　<%= @post.created_at %>
+			　<%= @post.created_at.to_s(:datetime) %>
 		</p>
 		<div class="post-body" style="margin-bottom: 40px;">
 			<%= @post.body %>
@@ -50,7 +50,7 @@
 				</td>
 				<td>
 					<span style="display: block;"><%= comment.user.name %></span>
-					<span style="font-size: 10px; color: gray;"><%= comment.created_at %></span>
+					<span style="font-size: 10px; color: gray;"><%= comment.created_at.to_s(:datetime) %></span>
 				</td>
 				<td style="padding: 22px 0 0 0;" align="right">
 					<% if current_user.id == comment.user.id %>
