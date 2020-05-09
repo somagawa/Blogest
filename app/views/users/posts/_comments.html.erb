@@ -1,0 +1,9 @@
+<table class="table" id="comments" style="margin-top: 20px;">
+	<% post.comments.each do |comment| %>
+		<tbody id="comment-<%= comment.id %>">
+
+			<%= render "users/posts/comment", comment: comment %>
+
+		</tbody>
+	<% end %>
+</table>

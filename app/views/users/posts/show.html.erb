@@ -15,7 +15,7 @@
 		</div>
 		<div class="post-footer" id="like-<%= @post.id %>">
 
-			<%= render "like", post: @post %>
+			<%= render "users/posts/like", post: @post %>
 
 		</div>
 		<div class="creater-detail" style="border-top: 1px solid gray">
@@ -40,32 +40,12 @@
 </div>
 <div class="post" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray;">
 	<p>コメント <%= @post.comments.count %>件</p>
-	<table class="table" style="margin-top: 20px;">
-		<% @post.comments.each do |comment| %>
-			<tr>
-				<td rowspan="2">
-					<%= link_to user_path(comment.user) do %>
-						<%= attachment_image_tag comment.user, :profile_image, :fill, 40, 40, format: "jpeg", fallback: "no_image.jpg", size: "40x40", :style => "border-radius: 50px;" %>
-					<% end %>
-				</td>
-				<td>
-					<span style="display: block;"><%= comment.user.name %></span>
-					<span style="font-size: 10px; color: gray;"><%= comment.created_at.to_s(:datetime) %></span>
-				</td>
-				<td style="padding: 22px 0 0 0;" align="right">
-					<% if current_user.id == comment.user.id %>
-						<%= link_to "削除", comment_path(comment), method: :delete, class: "btn btn-sm btn-danger" %>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" style="padding-top: 0;"><%= comment.body %></td>
-			</tr>
-		<% end %>
-	</table>
+
+	<%= render "users/posts/comments", post: @post %>
+
 	<div class="comment-form" style="padding-top: 30px; border-top: 1px solid gray" align="right">
-		<%= form_with model: [@post, @comment], local: true do |f| %>
-			<%= f.text_area :body, class: "form-control", style: "height: 100px;" %>
+		<%= form_with model: [@post, @comment] do |f| %>
+			<%= f.text_area :body, class: "form-control", id: "comment-form-body", style: "height: 100px;" %>
 			<%= f.submit "コメントする", class: "btn btn-sm btn-primary", style: "margin-top: 15px;" %>
 		<% end %>
 	</div>

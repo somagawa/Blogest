@@ -1,20 +1,15 @@
 class Users::CommentsController < ApplicationController
 	def create
-		@comment = Comment.new(comment_params)
-		@comment.user_id = current_user.id
-		@comment.post_id = params[:post_id]
-		if @comment.save
-			redirect_to post_path(@comment.post_id)
-		else
-			@post = @comment.post
-			render "users/posts/show"
-		end
+		comment = Comment.new(comment_params)
+		comment.user_id = current_user.id
+		comment.post_id = params[:post_id]
+		comment.save
+		@post = comment.post
 	end
 
 	def destroy
-		comment = Comment.find(params[:id])
-		comment.destroy
-		redirect_to post_path(comment.post)
+		@comment = Comment.find(params[:id])
+		@comment.destroy
 	end
 
 	private
