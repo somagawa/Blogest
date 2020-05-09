@@ -6,10 +6,17 @@ class Users::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if params[:tab] == "いいね"
-      @posts = @user.like_posts
+      @posts = @user.like_posts.page(params[:page])
       @tab = "いいね"
+    elsif params[:tab] == "フォロー"
+      @users = @user.followings.page(params[:page])
+      @tab = "フォロー"
+    elsif params[:tab] == "フォロワー"
+      @users = @user.followers.page(params[:page])
+      @tab = "フォロワー"
     else
-      @posts = @user.posts
+      @posts = @user.posts.page(params[:page])
+      @tab = "記事一覧"
     end
   end
 

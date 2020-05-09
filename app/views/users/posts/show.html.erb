@@ -32,7 +32,11 @@
 					<td colspan="2"><%= @post.user.introduction %></td>
 				</tr>
 				<tr>
-					<td colspan="3" class="text-right"><%= link_to "フォローする", "#", class: "btn btn-primary" %></td>
+					<td id="follow-<%= @post.user.id %>" colspan="3" class="text-right">
+
+						<%= render "users/users/follow", user: @post.user %>
+
+					</td>
 				</tr>
 			</table>
 		</div>
