@@ -7,12 +7,11 @@
 				<% if @user == current_user %>
 					<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
 				<% else %>
-					<% if @user.followed_by?(current_user) %>
-						<% relationship = Relationship.find_by(following_id: current_user.id, follower_id: @user.id) %>
-						<%= link_to "フォローを外す", relationship_path(relationship), method: :delete, class: "btn btn-success" %>
-					<% else %>
-						<%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-primary" %>
-					<% end %>
+					<div id="follow-<%=@user.id %>">
+
+						<%= render "users/users/follow", user: @user %>
+
+					</div>
 				<% end %>
 			</td>
 		</tr>
@@ -83,15 +82,10 @@
 						</td>
 						<td><%= user.name %></td>
 						<td></td>
-						<td rowspan="2" align="right" style="vertical-align: middle">
-							<% if user != current_user %>
-								<% if user.followed_by?(current_user) %>
-									<% relationship = Relationship.find_by(following_id: current_user.id, follower_id: user.id) %>
-									<%= link_to "フォローを外す", relationship_path(relationship), method: :delete, class: "btn btn-sm btn-success" %>
-								<% else %>
-									<%= link_to "フォローする", user_relationships_path(user), method: :post, class: "btn btn-sm btn-primary" %>
-								<% end %>
-							<% end %>
+						<td id="follow-<%= user.id %>" rowspan="2" align="right" style="vertical-align: middle">
+
+							<%= render "users/users/follow", user: user %>
+
 						</td>
 					</tr>
 					<tr>

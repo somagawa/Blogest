@@ -32,15 +32,10 @@
 					<td colspan="2"><%= @post.user.introduction %></td>
 				</tr>
 				<tr>
-					<td colspan="3" class="text-right">
-						<% if current_user != @post.user %>
-							<% if @post.user.followed_by?(current_user) %>
-								<% relationship = Relationship.find_by(following_id: current_user.id, follower_id: @post.user.id) %>
-								<%= link_to "フォローを外す", relationship_path(relationship), method: :delete, class: "btn btn-success" %>
-							<% else %>
-								<%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "btn btn-primary" %>
-							<% end %>
-						<% end %>
+					<td id="follow-<%= @post.user.id %>" colspan="3" class="text-right">
+
+						<%= render "users/users/follow", user: @post.user %>
+
 					</td>
 				</tr>
 			</table>

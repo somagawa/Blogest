@@ -42,9 +42,9 @@
 						<div class="detail" style="padding: 10px;">
 							<h4><%= post.title %></h4>
 							<div class="footer" id="like-<%= post.id %>">
-
-								<%= render "users/posts/like", post: post %>
-
+								<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+								<%= post.likes.count %>
+								　<%= post.created_at.to_s(:datetime) %>
 							</div>
 						</div>
 					</div>
