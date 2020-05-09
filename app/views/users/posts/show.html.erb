@@ -1,31 +1,52 @@
-<div class="post" style="width: 100%; max-width: 600px; border: 0.1px solid lightgray;">
+<div class="post" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray;">
 	<%= link_to "編集", edit_post_path(@post) %>
 	<div class="post-image">
 		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg" %>
 	</div>
 	<div class="detail" style="padding: 20px;">
 		<h4><%= @post.title %></h4>
-		<p><%= @post.created_at %></p>
+		<p>
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+			<%= @post.likes.count %>
+			　<%= @post.created_at.to_s(:datetime) %>
+		</p>
 		<div class="post-body" style="margin-bottom: 40px;">
 			<%= @post.body %>
+		</div>
+		<div class="post-footer" id="like-<%= @post.id %>">
+
+			<%= render "users/posts/like", post: @post %>
+
 		</div>
 		<div class="creater-detail" style="border-top: 1px solid gray">
 			<table class="table" style="margin-top: 20px;">
 				<tr>
 					<td rowspan="2">
-						<%= link_to user_path(@user) do %>
-							<%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %>
+						<%= link_to user_path(@post.user) do %>
+							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %>
 						<% end %>
 					</td>
-					<td colspan="2"><%= @user.name %></td>
+					<td colspan="2"><%= @post.user.name %></td>
 				</tr>
 				<tr>
-					<td colspan="2"><%= @user.introduction %></td>
+					<td colspan="2"><%= @post.user.introduction %></td>
 				</tr>
 				<tr>
 					<td colspan="3" class="text-right"><%= link_to "フォローする", "#", class: "btn btn-primary" %></td>
 				</tr>
 			</table>
 		</div>
+	</div>
+</div>
+<div class="post" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray;">
+	<p>コメント <%= @post.comments.count %>件</p>
+
+	<%= render "users/posts/comments", post: @post %>
+
+	<div class="comment-form" style="padding-top: 30px; border-top: 1px solid gray" align="right">
+		<%= form_with model: [@post, @comment] do |f| %>
+			<%= f.text_area :body, class: "form-control", id: "comment-form-body", style: "height: 100px;" %>
+			<%= f.submit "コメントする", class: "btn btn-sm btn-primary", style: "margin-top: 15px;" %>
+		<% end %>
 	</div>
 </div>

@@ -41,8 +41,10 @@
 						</div>
 						<div class="detail" style="padding: 10px;">
 							<h4><%= post.title %></h4>
-							<div class="footer">
-								<%= post.created_at %>
+							<div class="footer" id="like-<%= post.id %>">
+
+								<%= render "users/posts/like", post: post %>
+
 							</div>
 						</div>
 					</div>
