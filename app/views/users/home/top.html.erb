@@ -54,17 +54,21 @@
 
 		</div>
 	</div>
-	<div class="col-sm-3" style="padding: 5px;">
+	<div class="col-sm-3" style="padding: 0;">
 		<div class="category-list" style="border: 1px solid lightgray;">
 			<table class="table">
 				<thead>
 					<tr>
-						<th class="active">条件</th>
+						<th class="active">人気タグ</th>
 					</tr>
 				</thead>
 				<tbody style="border-top: 1px solid lightgray;">
 					<tr>
-						<td>data</td>
+						<td>
+							<% @tags.each do |tag| %>
+								<%= link_to tag, search_path(search_tag: tag.name), class: "badge badge-default" %>
+							<% end %>
+						</td>
 					</tr>
 				</tbody>
 			</table>
