@@ -44,9 +44,14 @@ class Users::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
-    @tag_form = params[:search_tag]
+    if params[:search_tag] != ""
+      @posts = Post.search(params[:keyword]).tagged_with(params[:search_tag]).page(params[:page])
+    else
+      @posts = Post.search(params[:keyword]).page(params[:page])
+    end
     @tags = ActsAsTaggableOn::Tag.most_used
+    @keyword_form = params[:keyword]
+    @tag_form = params[:search_tag]
     render 'index'
   end
 
