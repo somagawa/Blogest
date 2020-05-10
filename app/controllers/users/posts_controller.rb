@@ -1,8 +1,9 @@
 class Users::PostsController < ApplicationController
   def index
-      @posts = Post.page(params[:page])
+      @posts = Post.page(params[:page]).order(created_at: :desc)
       @tags = ActsAsTaggableOn::Tag.most_used(50)
       @tag_form = ""
+      @sort = "新着順"
   end
 
   def new
@@ -44,9 +45,29 @@ class Users::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
+    if params[:search_tag] != "" && params[:sort] == "新着順"
+      @posts = Post.search(params[:keyword]).tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
+
+    elsif params[:search_tag] != "" && params[:sort] == "いいね順"
+      post_like_count = Post.joins(:likes).group(:post_id).count
+      post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
+      post_ranking = Post.where(id: post_liked_ids)
+      @posts = post_ranking.search(params[:keyword]).tagged_with(params[:search_tag]).page(params[:page])
+
+    elsif params[:search_tag] == "" && params[:sort] == "新着順"
+      @posts = Post.search(params[:keyword]).page(params[:page]).order(created_at: :desc)
+
+    else
+      post_like_count = Post.joins(:likes).group(:post_id).count
+      post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
+      post_ranking = Post.where(id: post_liked_ids)
+      @posts = post_ranking.search(params[:keyword]).page(params[:page])
+
+    end
+    @tags = ActsAsTaggableOn::Tag.most_used(50)
+    @keyword_form = params[:keyword]
     @tag_form = params[:search_tag]
-    @tags = ActsAsTaggableOn::Tag.most_used
+    @sort = params[:sort]
     render 'index'
   end
 

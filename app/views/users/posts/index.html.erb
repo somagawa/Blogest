@@ -5,15 +5,20 @@
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
 					<tr>
 						<td>キーワード</td>
-						<td colspan="2"><%= f.text_field :keyword, class: "form-control" %></td>
+						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>タグ</td>
 						<td><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
-						<td></td>
-						<td></td>
+					<% if @sort == "新着順" %>
+						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
+						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+					<% else %>
+						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
+						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+					<% end %>
 						<td><%= f.submit "検索", class: "btn btn-primary" %></td>
 					</tr>
 				<% end %>
@@ -56,7 +61,7 @@
 					<tr>
 						<td>
 							<% @tags.each do |tag| %>
-								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name), class: "badge badge-default" %>
+								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, sort: @sort), class: "badge badge-default" %>
 							<% end %>
 						</td>
 					</tr>
