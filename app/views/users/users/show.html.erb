@@ -96,4 +96,11 @@
 			<% end %>
 		<% end %>
 	</div>
+		<div class="pagenation" align="center">
+			<% if @tab == "記事一覧" || @tab == "いいね" %>
+				<%= paginate @posts, class: "paginate" %>
+			<% else %>
+				<%= paginate @users, class: "paginate" %>
+			<% end %>
+		</div>
 </div>

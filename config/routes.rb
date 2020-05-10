@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   		resources :comments, only: [:create, :destroy]
   		resources :likes, only: [:create, :destroy]
   	end
+
+    get 'search' => 'posts#search'
   end
 
   namespace :admins do

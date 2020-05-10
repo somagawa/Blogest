@@ -1,6 +1,8 @@
 class Users::PostsController < ApplicationController
   def index
-  	@posts = Post.page(params[:page])
+      @posts = Post.page(params[:page])
+      @tags = ActsAsTaggableOn::Tag.most_used(50)
+      @tag_form = ""
   end
 
   def new
@@ -41,9 +43,16 @@ class Users::PostsController < ApplicationController
   	redirect_to posts_path
   end
 
+  def search
+    @posts = Post.tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
+    @tag_form = params[:search_tag]
+    @tags = ActsAsTaggableOn::Tag.most_used
+    render 'index'
+  end
+
   private
 
   def post_params
-  	params.require(:post).permit(:title, :body, :image)
+  	params.require(:post).permit(:title, :body, :image, :tag_list)
   end
 end
