@@ -1,18 +1,25 @@
-<div class="new-post" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray;">
-
-	<% if @post.errors.any? %>
-		<% @post.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-		<% end %>
-	<% end %>
+<div class="new-post" style="max-width: 600px; border: 0.1px solid lightgray;">
 
 	<%= form_with model: @post, local: true do |f| %>
-		<%= f.text_field :title, class: "form-control", placeholder: "タイトル", style: "margin-bottom: 20px;" %>
-		<%= f.text_area :body, class: "form-control", placeholder: "本文", style: "margin-bottom: 20px; height: 400px;" %>
-		<%= f.attachment_field :image, style: "margin-bottom: 20px;" %>
-		<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)" %>
-		<div class="text-right">
-			<%= f.submit "投稿", class: "btn btn-primary" %>
+
+		<div class="image-field" onClick="$('#file').click()">
+			<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg", fallback: "preview_image.jpg", size: "600x400", id: "img_prev" %>
+		</div>
+		<%= f.attachment_field :image, style: "display: none;", id: "file" %>
+
+		<% if @post.errors.any? %>
+			<% @post.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		<% end %>
+
+		<div class="text-field" style="padding: 20px;">
+			<%= f.text_field :title, class: "form-control", placeholder: "タイトル", style: "margin-bottom: 20px;" %>
+			<%= f.text_area :body, class: "form-control", placeholder: "本文", style: "height: 400px; margin-bottom: 20px;" %>
+			<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)", style: "margin-bottom: 20px;" %>
+			<div class="text-right">
+				<%= f.submit "投稿", class: "btn btn-primary" %>
+			</div>
 		</div>
 	<% end %>
 </div>
