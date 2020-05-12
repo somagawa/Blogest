@@ -23,6 +23,9 @@ class Users::PostsController < ApplicationController
   def show
   	@post = Post.find(params[:id])
     @comment = Comment.new
+
+    address = @post.address
+    @map = Geocoder.coordinates(address)
   end
 
   def edit
@@ -46,26 +49,27 @@ class Users::PostsController < ApplicationController
 
   def search
     if params[:search_tag] != "" && params[:sort] == "新着順"
-      @posts = Post.search(params[:keyword]).tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
+      @posts = Post.search(params[:keyword], params[:address]).tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
 
     elsif params[:search_tag] != "" && params[:sort] == "いいね順"
       post_like_count = Post.joins(:likes).group(:post_id).count
       post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
       post_ranking = Post.where(id: post_liked_ids)
-      @posts = post_ranking.search(params[:keyword]).tagged_with(params[:search_tag]).page(params[:page])
+      @posts = post_ranking.search(params[:keyword], params[:address]).tagged_with(params[:search_tag]).page(params[:page])
 
     elsif params[:search_tag] == "" && params[:sort] == "新着順"
-      @posts = Post.search(params[:keyword]).page(params[:page]).order(created_at: :desc)
+      @posts = Post.search(params[:keyword], params[:address]).page(params[:page]).order(created_at: :desc)
 
     else
       post_like_count = Post.joins(:likes).group(:post_id).count
       post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
       post_ranking = Post.where(id: post_liked_ids)
-      @posts = post_ranking.search(params[:keyword]).page(params[:page])
+      @posts = post_ranking.search(params[:keyword], params[:address]).page(params[:page])
 
     end
     @tags = ActsAsTaggableOn::Tag.most_used(50)
     @keyword_form = params[:keyword]
+    @address_form = params[:address]
     @tag_form = params[:search_tag]
     @sort = params[:sort]
     render 'index'
