@@ -10,15 +10,20 @@
 			<%= @post.likes.count %>
 			　<%= @post.created_at.to_s(:datetime) %>
 		</span>
-		<div class="tag-list" style="margin: 10px 0 30px 0">
+		<div class="tag-list" style="margin: 10px 0 10px 0">
 			<% @post.tag_list.each do |tag| %>
 				<%= link_to tag, search_path(search_tag: tag), class: "badge badge-default" %>
 			<% end %>
 		</div>
+		<p style="margin-bottom: 30px;"><%= @post.address %></p>
 		<div class="post-body" style="margin-bottom: 40px;">
 			<%= @post.body %>
 		</div>
-		<div class="post-footer" id="like-<%= @post.id %>">
+
+		<h4><%= @post.address %></h4>
+		<div id="map" style="height: 300px"></div>
+
+		<div class="post-footer" style="font-size: 18px; margin-top: 20px;" id="like-<%= @post.id %>">
 
 			<%= render "users/posts/like", post: @post %>
 
@@ -61,3 +66,30 @@
 		<% end %>
 	</div>
 </div>
+
+<script>
+function initMap(){
+  var pos = {lat: <%= @map[0] %>, lng: <%= @map[1] %>};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+  	center: pos,
+  	zoom: 15
+  });
+
+  var infowindow = new google.maps.InfoWindow({
+  	content: "<%= @post.address %>"
+  });
+
+  var marker = new google.maps.Marker({
+    position: pos,
+    map: map,
+    title: "<%= @post.address %>"
+　});
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV.fetch("API_KEY") %>&callback=initMap" async defer></script>

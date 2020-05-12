@@ -15,7 +15,7 @@ class Post < ApplicationRecord
 		likes.where(user_id: user.id).exists?
 	end
 
-	def self.search(keyword)
-		where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+	def self.search(keyword, address)
+		where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"]).where("address like?", "%#{address}%")
 	end
 end

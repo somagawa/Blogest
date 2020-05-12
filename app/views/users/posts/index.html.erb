@@ -10,14 +10,21 @@
 						<td></td>
 					</tr>
 					<tr>
+						<td>住所または地名</td>
+						<td><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
+					</tr>
+					<tr>
 						<td>タグ</td>
 						<td><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
+
 					<% if @sort == "新着順" %>
 						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
 						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+
 					<% else %>
 						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
 						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+
 					<% end %>
 						<td><%= f.submit "検索", class: "btn btn-primary" %></td>
 					</tr>
@@ -61,7 +68,7 @@
 					<tr>
 						<td>
 							<% @tags.each do |tag| %>
-								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, sort: @sort), class: "badge badge-default" %>
+								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, sort: @sort), class: "badge badge-default" %>
 							<% end %>
 						</td>
 					</tr>

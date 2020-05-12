@@ -15,8 +15,10 @@
 
 		<div class="text-field" style="padding: 20px;">
 			<%= f.text_field :title, class: "form-control", placeholder: "タイトル", style: "margin-bottom: 20px;" %>
-			<%= f.text_area :body, class: "form-control", placeholder: "本文", style: "height: 400px; margin-bottom: 20px;" %>
-			<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)", style: "margin-bottom: 20px;" %>
+			<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)", style: "margin-bottom: 40px;" %>
+			<%= f.text_area :body, class: "form-control", placeholder: "本文", style: "height: 400px; margin-bottom: 40px;" %>
+			<%= f.text_field :post_code, class: "form-control", placeholder: "郵便番号", style: "max-width: 280px; margin-bottom: 20px;", id: "address_zipcode" %>
+			<%= f.text_field :address, class: "form-control", placeholder: "住所", style: "margin-bottom: 20px;", id: "address" %>
 			<div class="text-right">
 				<%= f.submit "投稿", class: "btn btn-primary" %>
 			</div>
