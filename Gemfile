@@ -77,3 +77,6 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'geocoder'
 # 環境変数
 gem 'dotenv-rails'
+
+gem 'hirb'
+gem 'hirb-unicode'

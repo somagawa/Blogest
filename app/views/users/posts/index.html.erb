@@ -4,26 +4,26 @@
 			<table class="table">
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
 					<tr>
-						<td>キーワード</td>
+						<td style="vertical-align: middle;">キーワード</td>
 						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>住所または地名</td>
-						<td><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
+						<td style="vertical-align: middle;">住所または地名</td>
+						<td colspan="4"><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
 					</tr>
 					<tr>
-						<td>タグ</td>
+						<td style="vertical-align: middle;">タグ</td>
 						<td><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
 
 					<% if @sort == "新着順" %>
-						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
-						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順" %> いいね順</td>
 
 					<% else %>
-						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
-						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順" %> 新着順</td>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
 
 					<% end %>
 						<td><%= f.submit "検索", class: "btn btn-primary" %></td>
@@ -36,8 +36,8 @@
 				<div class="post col-sm-4 col-xs-6" style="padding: 0 5px 10px 5px;">
 					<%= link_to post_path(post) do %>
 						<div class="post" style="height: 200px; border: 0.1px solid lightgray;">
-							<div class="post-image" style="height: 60%;">
-								<%= attachment_image_tag post, :image, :fill, 220, 120, format: "jpeg" %>
+							<div class="post-image" style="height: 120px;">
+								<%= attachment_image_tag post, :image, :fill, 210, 120, format: "jpeg", size: "210x120", style: "width: 100%;" %>
 							</div>
 							<div class="detail" style="padding: 10px;">
 								<h5><%= post.title %></h5>

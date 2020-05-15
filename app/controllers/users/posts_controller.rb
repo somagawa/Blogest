@@ -1,4 +1,7 @@
 class Users::PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit]
+
   def index
       @posts = Post.page(params[:page]).order(created_at: :desc)
       @tags = ActsAsTaggableOn::Tag.most_used(50)
@@ -79,5 +82,12 @@ class Users::PostsController < ApplicationController
 
   def post_params
   	params.require(:post).permit(:title, :body, :image, :post_code, :address, :tag_list)
+  end
+
+  def ensure_correct_user
+    post = Post.find(params[:id])
+    if current_user != post.user
+      redirect_to posts_path
+    end
   end
 end
