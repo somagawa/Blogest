@@ -3,7 +3,7 @@
 	<%= form_with model: @post, local: true do |f| %>
 
 		<div class="image-field" onClick="$('#file').click()">
-			<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg", fallback: "preview_image.jpg", size: "600x400", id: "img_prev" %>
+			<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg", fallback: "prev_ima_1.jpg", size: "600x400", id: "img_prev", style: "width: 100%;" %>
 		</div>
 		<%= f.attachment_field :image, style: "display: none;", id: "file" %>
 

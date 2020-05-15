@@ -1,4 +1,7 @@
 class Users::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit]
+
   def index
   	@users = User.page(params[:page])
   end
@@ -41,5 +44,11 @@ class Users::UsersController < ApplicationController
 
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image, :email)
+  end
+
+  def ensure_correct_user
+    if current_user.id != params[:id].to_i
+      redirect_to user_path(current_user)
+    end
   end
 end

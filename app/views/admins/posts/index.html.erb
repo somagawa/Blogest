@@ -1,0 +1,9 @@
+<div class="users_list">
+	<% @posts.each do |post| %>
+		<div id="post-<%= post.id %>">
+
+			<%= render "admins/posts/post", post: post %>
+
+		</div>
+	<% end %>
+</div>

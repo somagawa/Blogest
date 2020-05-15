@@ -9,7 +9,7 @@
 		<span style="font-size: 10px; color: gray;"><%= comment.created_at.to_s(:datetime) %></span>
 	</td>
 	<td style="padding: 22px 0 0 0;" align="right">
-		<% if current_user.id == comment.user.id %>
+		<% if current_user == comment.user || admin_signed_in? %>
 			<%= link_to "削除", comment_path(comment), method: :delete, remote: true, class: "btn btn-sm btn-danger" %>
 		<% end %>
 	</td>

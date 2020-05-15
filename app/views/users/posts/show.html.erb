@@ -1,7 +1,6 @@
 <div class="post" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray;">
-	<%= link_to "編集", edit_post_path(@post) %>
 	<div class="post-image">
-		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg" %>
+		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg", style: "width: 100%;" %>
 	</div>
 	<div class="detail" style="padding: 20px;">
 		<h4><%= @post.title %></h4>
@@ -12,16 +11,22 @@
 		</span>
 		<div class="tag-list" style="margin: 10px 0 10px 0">
 			<% @post.tag_list.each do |tag| %>
-				<%= link_to tag, search_path(search_tag: tag), class: "badge badge-default" %>
+				<%= link_to tag, search_path(search_tag: tag, sort: "新着順"), class: "badge badge-default" %>
 			<% end %>
 		</div>
 		<p style="margin-bottom: 30px;"><%= @post.address %></p>
+		<% if @post.user == current_user %>
+			<div class="edit" style="margin: -40px 0 20px 0;" align="right">
+				<%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
+				<%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
+		</div>
+		<% end %>
 		<div class="post-body" style="margin-bottom: 40px;">
 			<%= @post.body %>
 		</div>
 
 		<h4><%= @post.address %></h4>
-		<div id="map" style="height: 300px"></div>
+		<div id="map" style="height: 300px; background-image: url(<%= asset_path "no_map_img.jpg" %>); background-size: cover;"></div>
 
 		<div class="post-footer" style="font-size: 18px; margin-top: 20px;" id="like-<%= @post.id %>">
 
@@ -67,29 +72,31 @@
 	</div>
 </div>
 
-<script>
-function initMap(){
-  var pos = {lat: <%= @map[0] %>, lng: <%= @map[1] %>};
+<% if @map != nil %>
+	<script>
+	function initMap(){
+	  var pos = {lat: <%= @map[0] %>, lng: <%= @map[1] %>};
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-  	center: pos,
-  	zoom: 15
-  });
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	  	center: pos,
+	  	zoom: 15
+	  });
 
-  var infowindow = new google.maps.InfoWindow({
-  	content: "<%= @post.address %>"
-  });
+	  var infowindow = new google.maps.InfoWindow({
+	  	content: "<%= @post.address %>"
+	  });
 
-  var marker = new google.maps.Marker({
-    position: pos,
-    map: map,
-    title: "<%= @post.address %>"
-　});
+	  var marker = new google.maps.Marker({
+	    position: pos,
+	    map: map,
+	    title: "<%= @post.address %>"
+	　});
 
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
-}
+	  marker.addListener('click', function() {
+	    infowindow.open(map, marker);
+	  });
+	}
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV.fetch("API_KEY") %>&callback=initMap" async defer></script>
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV.fetch("API_KEY") %>&callback=initMap" async defer></script>
+<% end %>
