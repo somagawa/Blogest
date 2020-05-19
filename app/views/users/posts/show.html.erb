@@ -1,6 +1,6 @@
 <div class="post" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray;">
 	<div class="post-image">
-		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg", style: "width: 100%;" %>
+		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg", fallback: "no_image.jpg", style: "width: 100%;" %>
 	</div>
 	<div class="detail" style="padding: 20px;">
 		<h4><%= @post.title %></h4>
