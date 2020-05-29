@@ -25,7 +25,7 @@ describe "ヘッダーのテスト", type: :system do
 					expect(page).to have_link(href: new_post_path)
 				end
 				it "ログアウトリンクが表示される" do
-					expect(page).to have_link("delete", href: destroy_user_session)
+					expect(page).to have_link(href: destroy_user_session_path)
 				end
 			end
 		end

@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-sm-9" style="max-width: 700px;">
+	<div class="col-sm-9" style="max-width: 750px;">
 		<div class="search-form">
 			<table class="table">
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -35,13 +35,14 @@
 			<% @posts.each do |post| %>
 				<div class="post col-sm-4 col-xs-6" style="padding: 0 5px 10px 5px;">
 					<%= link_to post_path(post) do %>
-						<div class="post" style="height: 200px; border: 0.1px solid lightgray;">
-							<div class="post-image" style="height: 120px;">
-								<%= attachment_image_tag post, :image, :fill, 210, 120, format: "jpeg", size: "210x120", style: "width: 100%;" %>
+						<div class="post shadow2" style="height: 225px; border: 0.1px solid lightgray; background-color: white;">
+							<div class="post-image" style="height: 140px;">
+								<%= attachment_image_tag post, :image, :fill, 230, 140, format: "jpeg", size: "230x140", style: "width: 100%;" %>
 							</div>
 							<div class="detail" style="padding: 10px;">
-								<h5><%= post.title %></h5>
-								<div class="footer" id="like-<%= post.id %>">
+								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
+
+								<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 15px;">
 
 									<%= render "like", post: post %>
 
@@ -57,7 +58,7 @@
 		</div>
 	</div>
 	<div class="col-sm-3" style="padding: 0;">
-		<div class="category-list" style="border: 1px solid lightgray;">
+		<div class="category-list shadow2" style="border: 1px solid lightgray; background-color: white;">
 			<table class="table">
 				<thead>
 					<tr>

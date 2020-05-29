@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blogest</title>
+    <title>ばしょログ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,20 +9,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color: #f5f5f5;">
 
     <% if current_page?(new_admin_session_path) %>
 
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse" style="background-color: #5f9ea0; box-shadow: 0px 10px 15px -15px gray; border-radius: 0; border-style: none;">
         <div class="container-fluid">
           <div class="navbar-header">
-            <%= link_to "ばしょログ", new_admin_session_path, class: "navbar-brand navbar-left" %>
+            <%= link_to new_admin_session_path, class: "navbar-brand navbar-left" do %>
+              <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
+            <% end %>
           </div>
         </div>
       </nav>
 
     <% else %>
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse" style="background-color: #5f9ea0; box-shadow: 0px 10px 15px -15px gray; border-radius: 0; border-style: none;">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_item">
@@ -32,9 +34,13 @@
               <span class="icon-bar"></span>
             </button>
             <% if admin_signed_in? %>
-              <%= link_to "ばしょログ", admins_users_path, class: "navbar-brand" %>
+              <%= link_to admins_users_path, class: "navbar-brand" do%>
+                <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
+              <% end %>
             <% else %>
-              <%= link_to "ばしょログ", root_path, class: "navbar-brand" %>
+              <%= link_to root_path, class: "navbar-brand", style: "padding: 0;" do %>
+                <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
+              <% end %>
             <% end %>
           </div>
 
@@ -64,6 +70,10 @@
     <div class="container" style="padding-bottom: 50px;">
       <p id="notice"><%= notice %></p>
       <%= yield %>
+    </div>
+
+    <div class="footer" style="color: white; background-color: #a9a9a9; margin-top: 200px; padding: 60px 0 0 60px; height: 100px;">
+      <small>© 2020 Copyright Text</small>
     </div>
   </body>
 </html>

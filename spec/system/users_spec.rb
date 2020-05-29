@@ -125,7 +125,7 @@ describe "会員のテスト" do
 		context "表示の確認" do
 			it "退会リンクが表示されている" do
 				visit users_destroy_page_path
-				expect(page).to have_link("delete", user_registration_path)
+				expect(page).to have_link(href: user_registration_path)
 			end
 		end
 		context "アクセスの確認" do
@@ -184,7 +184,7 @@ describe "会員のテスト" do
 				expect(page).to have_link(href: edit_user_path(user))
 			end
 			it "フォローリンクが表示されない" do
-				expect(page).to_not have_link("post", href: user_relationships_path(user))
+				expect(page).to_not have_link(href: user_relationships_path(user))
 			end
 		end
 		context "他人の詳細画面の表示確認" do
@@ -192,7 +192,7 @@ describe "会員のテスト" do
 				visit user_path(user2)
 			end
 			it "フォローリンクが表示される" do
-				expect(page).to have_link("post", href: user_relationships_path(user2))
+				expect(page).to have_link(href: user_relationships_path(user2))
 			end
 			it "編集リンクが表示されない" do
 				expect(page).to_not eq have_link(href: edit_user_path(user2))
