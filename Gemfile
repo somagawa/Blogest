@@ -84,3 +84,7 @@ gem 'hirb-unicode'
 gem "capybara-webkit"
 
 gem 'pry-rails'
+
+group :production do
+  gem 'mysql2'
+end
