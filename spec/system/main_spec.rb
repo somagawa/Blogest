@@ -37,7 +37,7 @@ describe "アクセス権限のテスト", type: :system do
 			is_expected.to eq new_user_session_path
 		end
 		it "記事詳細画面に遷移できない" do
-			visit post_post(post)
+			visit post_path(post)
 			is_expected.to eq new_user_session_path
 		end
 	end

@@ -33,7 +33,7 @@ describe "検索のテスト", type: :system do
 			expect(page).to have_link(href: post_path(post))
 		end
 		it "記事にいいねリンクが表示される" do
-			expect(page).to have_link("post", href: post_like_path(post))
+			expect(page).to have_link(href: post_likes_path(post))
 		end
 		it "キーワードフォームが表示される" do
 			expect(page).to have_field "keyword"

@@ -50,18 +50,18 @@ describe "記事のテスト", type: :system do
 			end
 
 			it "投稿に成功し、記事詳細画面に遷移する" do
-				fill_in "post[title]", with: Faker::Lorem.characters(number:10)
+				fill_in "post[title]", with: "タイトルタイトル"
 				fill_in "post[tag_list]", with: Faker::Lorem.characters(number:5)
 				fill_in "post[body]", with: Faker::Lorem.characters(number:400)
 				fill_in "post[post_code]", with: Faker::Lorem.characters(number:7)
 				fill_in "post[address]", with: Faker::Lorem.characters(number:20)
 				click_button "投稿"
 
-				expect(current_path).to eq post_path(1)
+				expect(page).to have_content "タイトルタイトル"
 			end
 			it "空欄で投稿に失敗する" do
 				click_button "投稿"
-				expect(current_path).to eq "/posts"
+				expect(page).to have_content "入力されていません"
 			end
 		end
 	end
@@ -152,7 +152,7 @@ describe "記事のテスト", type: :system do
 				要検討
 			end
 			it "いいねリンクが表示される" do
-				expect(page).to have_link("post", href: post_likes_path(post))
+				expect(page).to have_link(href: post_likes_path(post))
 			end
 
 			it "プロフィール画像が表示される" do
@@ -181,10 +181,10 @@ describe "記事のテスト", type: :system do
 				expect(page).to have_field "comment[body]"
 			end
 			it "自分のコメントに削除リンクが表示される" do
-				expect(page).to have_link("delete", href: comment_path(comment))
+				expect(page).to have_link(href: comment_path(comment))
 			end
 			it "他人のコメントに削除リンクが表示されない" do
-				expect(page).to_not have_link("delete", href: comment_path(comment2))
+				expect(page).to_not have_link(href: comment_path(comment2))
 			end
 		end
 		context "自分の詳細画面の表示確認" do
@@ -193,10 +193,22 @@ describe "記事のテスト", type: :system do
 			end
 			it "編集、削除リンクが表示される" do
 				expect(page).to have_link(href: edit_post_path(post))
-				expect(page).to have_link("delete", href: post_path(post))
+				expect(page).to have_link(href: post_path(post))
 			end
 			it "フォローリンクが表示されない" do
-				expect(page).to have_link("post", href: user_relationships_path(post.user))
+				expect(page).to_not have_link(href: user_relationships_path(post.user))
+			end
+		end
+		context "他人の詳細画面の表示確認" do
+			before do
+				visit post_path(post2)
+			end
+			it "編集、削除リンクが表示されない" do
+				expect(page).to_not have_link(href: edit_post_path(post))
+				expect(page).to_not have_link(href: post_path(post))
+			end
+			it "フォローリンクが表示される" do
+				expect(page).to have_link(href: user_relationships_path(post2.user))
 			end
 		end
 		context "コメントフォームの確認" do
@@ -205,12 +217,12 @@ describe "記事のテスト", type: :system do
 			end
 
 			it "投稿に成功する" do
-				fill_in "comment[body]", with: Faker::Lorem.characters(number:100)
-				click_button "コメントする"
-				expect(page).to have_content user.name
+			  post post_comments_path(post_id: post.id, body: "コメントコメント"), xhr: true
+			  expect(page).to have_content "コメントコメント"
 			end
 			it "空欄で投稿に失敗する" do
 				fill_in "comment[body]", with: ""
+				click_button "コメントする"
 				expect(page).to_not have_content user.name
 			end
 		end

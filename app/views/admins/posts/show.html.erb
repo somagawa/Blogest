@@ -1,4 +1,4 @@
-<div class="post" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray;">
+<div class="post" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray; background-color: white;">
 	<div class="post-image">
 		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg" %>
 	</div>
@@ -46,7 +46,7 @@
 		</div>
 	</div>
 </div>
-<div class="post" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray;">
+<div class="post" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
 	<p>コメント <%= @post.comments.count %>件</p>
 
 	<%= render "users/posts/comments", post: @post %>

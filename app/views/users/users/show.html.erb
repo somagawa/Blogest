@@ -1,4 +1,4 @@
-<div class="mypage" style="max-width: 700px; padding: 20px; border: 0.1px solid lightgray;">
+<div class="mypage shadow" style="max-width: 700px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
 	<table class="table">
 		<tr>
 			<td rowspan="3"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %></td>
@@ -55,13 +55,13 @@
 			<% @posts.each do |post| %>
 				<div class="post col-sm-4 col-xs-6" style="padding: 5px 5px 0 5px;">
 					<%= link_to post_path(post) do %>
-						<div class="post" style="height: 200px; border: 0.1px solid lightgray">
+						<div class="post shadow-hover" style="height: 200px; border: 0.1px solid lightgray">
 							<div class="post-image" style="height: 120px;">
 								<%= attachment_image_tag post, :image, :fill, 200, 120, format: "jpeg", size: "200x120", style: "width: 100%;" %>
 							</div>
 							<div class="detail" style="padding: 10px;">
-								<h4><%= post.title %></h4>
-								<div class="footer" id="like-<%= post.id %>">
+								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
+								<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 5px;">
 
 									<%= render "users/posts/like", post: post %>
 
@@ -80,8 +80,7 @@
 								<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg", size: "60x60", style: "border-radius: 50px;" %>
 							<% end %>
 						</td>
-						<td><%= user.name %></td>
-						<td></td>
+						<td colspan="2"><%= user.name %></td>
 						<td id="follow-<%= user.id %>" rowspan="2" align="right" style="vertical-align: middle">
 
 							<%= render "users/users/follow", user: user %>
