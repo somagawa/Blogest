@@ -1,0 +1,54 @@
+<div class="post" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray; background-color: white;">
+	<div class="post-image">
+		<%= attachment_image_tag @post, :image, :fill, 600, 400, format: "jpeg" %>
+	</div>
+	<div class="detail" style="padding: 20px;">
+		<h4><%= @post.title %></h4>
+		<span>
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+			<%= @post.likes.count %>
+			　<%= @post.created_at.to_s(:datetime) %>
+		</span>
+		<div class="tag-list" style="margin: 10px 0 10px 0">
+			<% @post.tag_list.each do |tag| %>
+				<span class="badge badge-default"><%= tag %></span>
+			<% end %>
+		</div>
+		<p><%= @post.address %></p>
+		<div class="destroy" style="margin: -40px 0 20px 0;" align="right">
+			<%= link_to "削除", admins_post_path(id: @post.id, com: "local"), method: :delete, class: "btn btn-danger" %>
+		</div>
+		<div class="post-body" style="margin-bottom: 40px;">
+			<%= @post.body %>
+		</div>
+		<div class="post-footer" style="font-size: 18px; margin-top: 20px;" id="like-<%= @post.id %>">
+			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+			<%= @post.likes.count %>
+			　<%= @post.created_at.to_s(:datetime) %>
+		</div>
+		<div class="creater-detail" style="border-top: 1px solid gray">
+			<table class="table" style="margin-top: 20px;">
+				<tr>
+					<td rowspan="3">
+						<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %>
+					</td>
+					<td colspan="3"><%= @post.user.name %></td>
+				</tr>
+				<tr>
+					<td colspan="3"><%= @post.user.introduction %></td>
+				</tr>
+				<tr>
+					<td style="max-width: 120px;">フォロー　<%= @post.user.followings.count %></td>
+					<td>フォロワー　<%= @post.user.followers.count %></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="post" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
+	<p>コメント <%= @post.comments.count %>件</p>
+
+	<%= render "users/posts/comments", post: @post %>
+
+</div>

@@ -1,0 +1,22 @@
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+
+  activerecord:
+    models:
+      post: "記事"
+      comment: "コメント"
+    attributes:
+      user:
+        email: "メールアドレス"
+        name: "名前"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認)"
+      post:
+        title: "タイトル"
+        body: "本文"

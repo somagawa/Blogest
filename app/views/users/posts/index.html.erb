@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-sm-9" style="max-width: 750px;">
+		<div class="search-form">
+			<table class="table">
+				<%= form_with url: search_path, method: :get, local: true do |f| %>
+					<tr>
+						<td style="vertical-align: middle;">キーワード</td>
+						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle;">住所または地名</td>
+						<td colspan="4"><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
+					</tr>
+					<tr>
+						<td style="vertical-align: middle;">タグ</td>
+						<td><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
+
+					<% if @sort == "新着順" %>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+
+					<% else %>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順" %> 新着順</td>
+						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+
+					<% end %>
+						<td><%= f.submit "検索", class: "btn btn-primary" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+		<div class="row">
+			<% @posts.each do |post| %>
+				<div class="post col-sm-4 col-xs-6" style="padding: 0 5px 10px 5px;">
+					<%= link_to post_path(post) do %>
+						<div class="post shadow2" style="height: 225px; border: 0.1px solid lightgray; background-color: white;">
+							<div class="post-image" style="height: 140px;">
+								<%= attachment_image_tag post, :image, :fill, 230, 140, format: "jpeg", size: "230x140", style: "width: 100%;" %>
+							</div>
+							<div class="detail" style="padding: 10px;">
+								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
+
+								<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 15px;">
+
+									<%= render "like", post: post %>
+
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="pagenation" align="center">
+			<%= paginate @posts, class: "paginate" %>
+		</div>
+	</div>
+	<div class="col-sm-3" style="padding: 0;">
+		<div class="category-list shadow2" style="border: 1px solid lightgray; background-color: white;">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="active">人気タグ</th>
+					</tr>
+				</thead>
+				<tbody style="border-top: 1px solid lightgray;">
+					<tr>
+						<td>
+							<% @tags.each do |tag| %>
+								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, sort: @sort), class: "badge badge-default" %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

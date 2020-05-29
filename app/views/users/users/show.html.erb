@@ -1,0 +1,105 @@
+<div class="mypage shadow" style="max-width: 700px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
+	<table class="table">
+		<tr>
+			<td rowspan="3"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %></td>
+			<td colspan="2"><%= @user.name %></td>
+			<td colspan="2" align="right">
+				<% if @user == current_user %>
+					<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
+				<% else %>
+					<div id="follow-<%=@user.id %>">
+
+						<%= render "users/users/follow", user: @user %>
+
+					</div>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4"><%= @user.introduction %></td>
+		</tr>
+		<tr>
+			<td style="max-width: 120px;">フォロー　<%= @user.followings.count %></td>
+			<td>フォロワー　<%= @user.followers.count %></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<ul class="nav nav-tabs nav-justified">
+		<% if @tab == "いいね" %>
+			<li role="presentation"><%= link_to "記事一覧", user_path(@user) %></li>
+			<li role="presentation" class="active"><a>いいね</a></li>
+			<li role="presentation"><%= link_to "フォロー", user_path(id: @user.id, tab: "フォロー") %></li>
+			<li role="presentation"><%= link_to "フォロワー", user_path(id: @user.id, tab: "フォロワー") %></li>
+		<% elsif @tab == "フォロー" %>
+			<li role="presentation"><%= link_to "記事一覧", user_path(@user) %></li>
+			<li role="presentation"><%= link_to "いいね", user_path(id: @user.id, tab: "いいね") %></li>
+			<li role="presentation" class="active"><a>フォロー</a></li>
+			<li role="presentation"><%= link_to "フォロワー", user_path(id: @user.id, tab: "フォロワー") %></li>
+		<% elsif @tab == "フォロワー" %>
+			<li role="presentation"><%= link_to "記事一覧", user_path(@user) %></li>
+			<li role="presentation"><%= link_to "いいね", user_path(id: @user.id, tab: "いいね") %></li>
+			<li role="presentation"><%= link_to "フォロー", user_path(id: @user.id, tab: "フォロー") %></li>
+			<li role="presentation" class="active"><a>フォロワー</a></li>
+		<% else %>
+			<li role="presentation" class="active"><a>記事一覧</a></li>
+			<li role="presentation"><%= link_to "いいね", user_path(id: @user.id, tab: "いいね") %></li>
+			<li role="presentation"><%= link_to "フォロー", user_path(id: @user.id, tab: "フォロー") %></li>
+			<li role="presentation"><%= link_to "フォロワー", user_path(id: @user.id, tab: "フォロワー") %></li>
+		<% end %>
+	</ul>
+
+	<div class="row" style="padding: 15px;">
+		<% if @tab == "記事一覧" || @tab == "いいね" %>
+			<% @posts.each do |post| %>
+				<div class="post col-sm-4 col-xs-6" style="padding: 5px 5px 0 5px;">
+					<%= link_to post_path(post) do %>
+						<div class="post shadow-hover" style="height: 200px; border: 0.1px solid lightgray">
+							<div class="post-image" style="height: 120px;">
+								<%= attachment_image_tag post, :image, :fill, 200, 120, format: "jpeg", size: "200x120", style: "width: 100%;" %>
+							</div>
+							<div class="detail" style="padding: 10px;">
+								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
+								<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 5px;">
+
+									<%= render "users/posts/like", post: post %>
+
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		<% else %>
+			<% @users.each do |user| %>
+				<table class="table">
+					<tr>
+						<td rowspan="2">
+							<%= link_to user_path(user) do %>
+								<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg", size: "60x60", style: "border-radius: 50px;" %>
+							<% end %>
+						</td>
+						<td colspan="2"><%= user.name %></td>
+						<td id="follow-<%= user.id %>" rowspan="2" align="right" style="vertical-align: middle">
+
+							<%= render "users/users/follow", user: user %>
+
+						</td>
+					</tr>
+					<tr>
+						<td>フォロワー　<%= user.followings.count %></td>
+						<td>フォロー　<%= user.followers.count %></td>
+					</tr>
+				</table>
+			<% end %>
+		<% end %>
+	</div>
+		<div class="pagenation" align="center">
+			<% if @tab == "記事一覧" || @tab == "いいね" %>
+				<%= paginate @posts, class: "paginate" %>
+			<% else %>
+				<%= paginate @users, class: "paginate" %>
+			<% end %>
+		</div>
+</div>

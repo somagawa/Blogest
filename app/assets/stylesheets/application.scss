@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tbody + tbody {
+	border: none;
+}
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
+.shadow {
+	box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
+ 							rgba(0,0,0,.03) 0 -1px 0 inset,
+  						rgba(0,0,0,.15) 0 12px 9px,
+   						rgba(0,0,0,.10) 0 7px 10px;
+}
+
+.shadow2 {
+  box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
+ 							rgba(0,0,0,.03) 0 -1px 0 inset,
+  						rgba(0,0,0,.15) 0 8px 9px,
+   						rgba(0,0,0,.10) 0 7px 10px;
+}
+
+.shadow-hover {
+	transition: box-shadow 0.2s ease-out,
+							transform 0.2s ease-out;
+}
+.shadow-hover:hover {
+  box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
+ 							rgba(0,0,0,.03) 0 -1px 0 inset,
+  						rgba(0,0,0,.15) 0 8px 9px,
+   						rgba(0,0,0,.10) 0 7px 10px;
+  transform: translateY(-0.5px);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #dcdcdc;
+}
