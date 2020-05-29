@@ -80,8 +80,6 @@ gem 'dotenv-rails'
 
 gem 'hirb'
 gem 'hirb-unicode'
-# Ajaxのテストを有効にするため
-gem "capybara-webkit"
 
 gem 'pry-rails'
 
