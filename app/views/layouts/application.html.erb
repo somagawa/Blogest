@@ -16,7 +16,7 @@
       <nav class="navbar navbar-inverse" style="background-color: #5f9ea0; box-shadow: 0px 10px 15px -15px gray; border-radius: 0; border-style: none;">
         <div class="container-fluid">
           <div class="navbar-header">
-            <%= link_to new_admin_session_path, class: "navbar-brand navbar-left" do %>
+            <%= link_to new_admin_session_path, class: "navbar-brand navbar-left", style: "padding: 0;" do %>
               <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
             <% end %>
           </div>
@@ -34,7 +34,7 @@
               <span class="icon-bar"></span>
             </button>
             <% if admin_signed_in? %>
-              <%= link_to admins_users_path, class: "navbar-brand" do%>
+              <%= link_to admins_users_path, class: "navbar-brand", style: "padding: 0;" do%>
                 <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
               <% end %>
             <% else %>
@@ -72,7 +72,7 @@
       <%= yield %>
     </div>
 
-    <div class="footer" style="color: white; background-color: #a9a9a9; margin-top: 200px; padding: 60px 0 0 60px; height: 100px;">
+    <div class="footer" style="color: white; background-color: #a9a9a9; margin-top: 400px; padding: 60px 0 0 60px; height: 100px;">
       <small>© 2020 Copyright Text</small>
     </div>
   </body>
