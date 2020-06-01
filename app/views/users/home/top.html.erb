@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-sm-3" style="padding: 5px;">
+	<div class="col-md-3" style="padding: 5px;">
 		<table class="table shadow2" style="border: 1px solid lightgray; background-color: white;">
 			<thead>
 				<tr class="active">
@@ -11,15 +11,15 @@
 				<tr style="border-top: 1px solid lightgray;">
 					<td style="width: 30px;">
 						<% if i == 0 %>
-							<img src="assets/1.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "1.jpg", alt: "サブタイトル", width: "20px" %>
 						<% elsif i == 1 %>
-							<img src="assets/2.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "2.jpg", alt: "サブタイトル", width: "20px" %>
 						<% elsif i == 2 %>
-							<img src="assets/3.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "3.jpg", alt: "サブタイトル", width: "20px" %>
 						<% elsif i == 3 %>
-							<img src="assets/4.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "4.jpg", alt: "サブタイトル", width: "20px" %>
 						<% else %>
-							<img src="assets/5.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "5.jpg", alt: "サブタイトル", width: "20px" %>
 						<% end %>
 					<td>
 						<%= link_to post_rank.title, post_path(post_rank), style: "color: gray; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden;" %>
@@ -39,15 +39,15 @@
 				<tr style="border-top: 1px solid lightgray;">
 					<td style="width: 30px;">
 						<% if i == 0 %>
-							<img src="assets/1.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "1.jpg", alt: "サブタイトル", width: "20px" %>
 						<% elsif i == 1 %>
-							<img src="assets/2.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "2.jpg", alt: "サブタイトル", width: "20px" %>
 						<% elsif i == 2 %>
-							<img src="assets/3.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "3.jpg", alt: "サブタイトル", width: "20px" %>
 						<% elsif i == 3 %>
-							<img src="assets/4.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "4.jpg", alt: "サブタイトル", width: "20px" %>
 						<% else %>
-							<img src="assets/5.jpg" alt="サイトタイトル" width="20px">
+							<%= image_tag "5.jpg", alt: "サブタイトル", width: "20px" %>
 						<% end %>
 					</td>
 					<td>
@@ -58,34 +58,32 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="col-sm-7">
+	<div class="col-md-7">
 		<div class="row">
+			<% @posts.each do |post| %>
+				<div class="col-sm-4" style="padding: 0 5px 10px 5px;">
+					<%= link_to post_path(post) do %>
+						<div class="post-item shadow2" style="height: 225px; border: 0.1px solid lightgray; background-color: white;">
+							<div class="post-image" style="height: 63%;">
+								<%= attachment_image_tag post, :image, :fill, 460, 280, format: "jpeg", style: "width: 100%;" %>
+							</div>
+							<div class="detail" style="padding: 10px;">
+								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
 
-		<% @posts.each do |post| %>
-			<div class="col-sm-4 col-xs-6" style="padding: 5px;">
-				<div class="post shadow2" style="height: 200px; border: 1px solid lightgray; background-color: white;">
-					<div class="post-image" style="height: 120px;">
-						<%= link_to post_path(post) do %>
-							<%= attachment_image_tag post, :image, :fill, 420, 240, format: "jpeg", style: "width: 100%;" %>
-						<% end %>
-					</div>
-					<div class="detail" style="padding: 10px;">
-						<%= link_to post_path(post) do %>
-							<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
-						<% end %>
-						<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 10px;">
-							<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-							<span style="font-size: 12px;"><%= post.likes.count %></span>
-							<span style="margin-left: 8px; font-size: 12px;"><%= post.created_at.to_s(:datetime) %></span>
+							<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 10px;">
+								<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+								<span style="font-size: 12px;"><%= post.likes.count %></span>
+								<span style="margin-left: 8px; font-size: 12px;"><%= post.created_at.to_s(:datetime) %></span>
+							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			</div>
 		<% end %>
 
 		</div>
 	</div>
-	<div class="col-sm-2" style="padding: 0;">
+	<div class="col-md-2" style="padding: 0;">
 		<div class="category-list shadow" style="border: 1px solid lightgray; background-color: white;">
 			<table class="table">
 				<thead>

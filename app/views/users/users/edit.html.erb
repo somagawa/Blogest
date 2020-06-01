@@ -9,9 +9,9 @@
 <%= form_with model: @user, local: true do |f| %>
 	<table class="table table-noborder">
 		<tr>
-			<td rowspan="5" style="width: 120px;">
+			<td rowspan="5" style="width: 66px;">
 				<div class="image-field" onClick="$('#file').click()">
-					<%= attachment_image_tag @user, :profile_image, :fill, 90, 90, format: "jpeg", fallback: "prev_img_2.jpg", size: "90x90", id: "img_prev", style: "border-radius: 50px;" %>
+					<%= attachment_image_tag @user, :profile_image, :fill, 90, 90, format: "jpeg", fallback: "prev_img_2.jpg", size: "90x90", id: "img_prev", style: "border-radius: 50px;", class: "profile-image" %>
 				</div>
 				<%= f.attachment_field :profile_image, id: "file", style: "display: none;" %>
 			</td>
