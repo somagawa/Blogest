@@ -1,9 +1,9 @@
 <div class="mypage shadow" style="max-width: 700px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
 	<table class="table">
 		<tr>
-			<td rowspan="3"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %></td>
-			<td colspan="2"><%= @user.name %></td>
-			<td colspan="2" align="right">
+			<td rowspan="3" style="width: 66px;"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px; margin-right: 20px;", class: "profile-image" %></td>
+			<td colspan="2" style="vertical-align: middle;"><%= @user.name %></td>
+			<td align="right">
 				<% if @user == current_user %>
 					<%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
 				<% else %>
@@ -20,9 +20,7 @@
 		</tr>
 		<tr>
 			<td style="max-width: 120px;">フォロー　<%= @user.followings.count %></td>
-			<td>フォロワー　<%= @user.followers.count %></td>
-			<td></td>
-			<td></td>
+			<td colspan="2">フォロワー　<%= @user.followers.count %></td>
 		</tr>
 	</table>
 
@@ -53,10 +51,10 @@
 	<div class="row" style="padding: 15px;">
 		<% if @tab == "記事一覧" || @tab == "いいね" %>
 			<% @posts.each do |post| %>
-				<div class="post col-sm-4 col-xs-6" style="padding: 5px 5px 0 5px;">
+				<div class="col-sm-4" style="padding: 5px 5px 0 5px;">
 					<%= link_to post_path(post) do %>
-						<div class="post shadow-hover" style="height: 200px; border: 0.1px solid lightgray">
-							<div class="post-image" style="height: 120px;">
+						<div class="post-item-mypage shadow-hover" style="height: 210px; border: 0.1px solid lightgray">
+							<div class="post-image" style="height: 60%;">
 								<%= attachment_image_tag post, :image, :fill, 400, 240, format: "jpeg", style: "width: 100%;" %>
 							</div>
 							<div class="detail" style="padding: 10px;">
@@ -75,21 +73,21 @@
 			<% @users.each do |user| %>
 				<table class="table">
 					<tr>
-						<td rowspan="2">
+						<td rowspan="2" class="profile-image-td">
 							<%= link_to user_path(user) do %>
-								<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg", size: "60x60", style: "border-radius: 50px;" %>
+								<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg", size: "60x60", style: "border-radius: 50px;", class: "profile-image" %>
 							<% end %>
 						</td>
-						<td colspan="2"><%= user.name %></td>
-						<td id="follow-<%= user.id %>" rowspan="2" align="right" style="vertical-align: middle">
+						<td colspan="2" style="vertical-align: middle;"><%= user.name %></td>
+						<td id="follow-<%= user.id %>" rowspan="2" align="right" style="width: 70px; vertical-align: middle">
 
 							<%= render "users/users/follow", user: user %>
 
 						</td>
 					</tr>
 					<tr>
-						<td>フォロワー　<%= user.followings.count %></td>
-						<td>フォロー　<%= user.followers.count %></td>
+						<td class="follow">フォロワー　<%= user.followings.count %></td>
+						<td class="follow">フォロー　<%= user.followers.count %></td>
 					</tr>
 				</table>
 			<% end %>
