@@ -22,7 +22,7 @@
 .table > tbody > tr > th,
 .table > tbody > tr > td,
 .table > tbody + tbody {
-	border: none;
+  border: none;
 }
 
 .pagination>li>a {
@@ -41,31 +41,86 @@
 }
 
 .shadow {
-	box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
- 							rgba(0,0,0,.03) 0 -1px 0 inset,
-  						rgba(0,0,0,.15) 0 12px 9px,
-   						rgba(0,0,0,.10) 0 7px 10px;
+  box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
+              rgba(0,0,0,.03) 0 -1px 0 inset,
+              rgba(0,0,0,.15) 0 12px 9px,
+              rgba(0,0,0,.10) 0 7px 10px;
 }
 
 .shadow2 {
   box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
- 							rgba(0,0,0,.03) 0 -1px 0 inset,
-  						rgba(0,0,0,.15) 0 8px 9px,
-   						rgba(0,0,0,.10) 0 7px 10px;
+              rgba(0,0,0,.03) 0 -1px 0 inset,
+              rgba(0,0,0,.15) 0 8px 9px,
+              rgba(0,0,0,.10) 0 7px 10px;
 }
 
 .shadow-hover {
-	transition: box-shadow 0.2s ease-out,
-							transform 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out,
+              transform 0.2s ease-out;
 }
 .shadow-hover:hover {
   box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
- 							rgba(0,0,0,.03) 0 -1px 0 inset,
-  						rgba(0,0,0,.15) 0 8px 9px,
-   						rgba(0,0,0,.10) 0 7px 10px;
+              rgba(0,0,0,.03) 0 -1px 0 inset,
+              rgba(0,0,0,.15) 0 8px 9px,
+              rgba(0,0,0,.10) 0 7px 10px;
   transform: translateY(-0.5px);
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #dcdcdc;
+  color: #dcdcdc;
+}
+
+.btn-outline-success {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.search-form-1 {
+  display: block;
+}
+
+.search-form-2 {
+  display: none;
+}
+
+
+@media screen and (max-width: 767px) {
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  margin: 0 !important;
+}
+
+.profile-image-td {
+  padding: 0 !important;
+  vertical-align: middle !important;
+}
+
+.follow {
+  font-size: 10px;
+}
+
+.post-item {
+  height: 350px !important;
+}
+
+.post-item-mypage {
+  height: 300px !important;
+}
+
+.search-form-1 {
+  display: none;
+}
+
+.search-form-2 {
+  display: block;
+}
+
 }

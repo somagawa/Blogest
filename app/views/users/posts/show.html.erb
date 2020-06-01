@@ -38,22 +38,22 @@
 				<tr>
 					<td rowspan="3">
 						<%= link_to user_path(@post.user) do %>
-							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;" %>
+							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;", class: "profile-image" %>
 						<% end %>
 					</td>
-					<td colspan="3"><%= @post.user.name %></td>
+					<td colspan="2" style="vertical-align: middle;"><%= @post.user.name %></td>
+					<td id="follow-<%= @post.user.id %>" class="text-right">
+
+						<%= render "users/users/follow", user: @post.user %>
+
+					</td>
 				</tr>
 				<tr>
 					<td colspan="3"><%= @post.user.introduction %></td>
 				</tr>
 				<tr>
 					<td style="max-width: 120px;">フォロー　<%= @post.user.followings.count %></td>
-					<td>フォロワー　<%= @post.user.followers.count %></td>
-					<td id="follow-<%= @post.user.id %>" class="text-right">
-
-						<%= render "users/users/follow", user: @post.user %>
-
-					</td>
+					<td colspan="2">フォロワー　<%= @post.user.followers.count %></td>
 				</tr>
 			</table>
 		</div>
