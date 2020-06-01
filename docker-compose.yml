@@ -1,20 +1,8 @@
 version: '3'
 services:
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
-      MYSQL_PASSWORD: 1234
-      MYSQL_DATABASE: Basyolog_db
-    volumes:
-      - mysql-data:/var/lib/mysql
-    ports:
-      - "4306:3306"
-
   app:
     build: .
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/Basyolog
       - public-data:/Basyolog/public
@@ -31,7 +19,6 @@ services:
       - 80:80
 
 volumes:
-  mysql-data:
   public-data:
   tmp-data:
   log-data:

@@ -19,3 +19,4 @@ RUN bundle install
 ADD . /Basyolog
 
 RUN mkdir -p tmp/sockets
+RUN mkdir -p tmp/pids
