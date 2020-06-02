@@ -22,7 +22,7 @@
 .table > tbody > tr > th,
 .table > tbody > tr > td,
 .table > tbody + tbody {
-	border: none;
+  border: none;
 }
 
 .pagination>li>a {
@@ -41,28 +41,28 @@
 }
 
 .shadow {
-	box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
- 							rgba(0,0,0,.03) 0 -1px 0 inset,
-  						rgba(0,0,0,.15) 0 12px 9px,
-   						rgba(0,0,0,.10) 0 7px 10px;
+  box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
+              rgba(0,0,0,.03) 0 -1px 0 inset,
+              rgba(0,0,0,.15) 0 12px 9px,
+              rgba(0,0,0,.10) 0 7px 10px;
 }
 
 .shadow2 {
   box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
- 							rgba(0,0,0,.03) 0 -1px 0 inset,
-  						rgba(0,0,0,.15) 0 8px 9px,
-   						rgba(0,0,0,.10) 0 7px 10px;
+              rgba(0,0,0,.03) 0 -1px 0 inset,
+              rgba(0,0,0,.15) 0 8px 9px,
+              rgba(0,0,0,.10) 0 7px 10px;
 }
 
 .shadow-hover {
-	transition: box-shadow 0.2s ease-out,
-							transform 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out,
+              transform 0.2s ease-out;
 }
 .shadow-hover:hover {
   box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
- 							rgba(0,0,0,.03) 0 -1px 0 inset,
-  						rgba(0,0,0,.15) 0 8px 9px,
-   						rgba(0,0,0,.10) 0 7px 10px;
+              rgba(0,0,0,.03) 0 -1px 0 inset,
+              rgba(0,0,0,.15) 0 8px 9px,
+              rgba(0,0,0,.10) 0 7px 10px;
   transform: translateY(-0.5px);
 }
 
