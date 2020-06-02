@@ -83,6 +83,4 @@ gem 'hirb-unicode'
 
 gem 'pry-rails'
 
-group :production do
-  gem 'mysql2'
-end
+gem 'mysql2'
