@@ -1,3 +1,40 @@
+.main-content {
+	max-width: 750px;
+}
+
+.search-form-1 {
+  display: block;
+}
+
+.search-form-2 {
+  display: none;
+}
+
+.post-item {
+	max-width: 375px;
+	height: 225px;
+	border: 1px solid lightgray;
+	background-color: white;
+	position: relative;
+}
+
+.post-item > .detail > p {
+	font-size: 15px;
+}
+
+.post-image {
+	height: 63%;
+}
+
+.detail {
+	padding: 10px;
+}
+
+.post-footer {
+	position: absolute;
+	bottom: 0px;
+}
+
 #img_prev:hover {
   opacity: 0.8;
 }

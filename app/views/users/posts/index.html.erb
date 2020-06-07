@@ -1,29 +1,29 @@
 <div class="row">
-	<div class="col-sm-9" style="max-width: 750px;">
+	<div class="main-content col-sm-9">
 		<div class="search-form-1">
 			<table class="table">
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
 					<tr>
-						<td style="vertical-align: middle;">キーワード</td>
+						<td>キーワード</td>
 						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td style="vertical-align: middle;">住所または地名</td>
+						<td>住所または地名</td>
 						<td colspan="4"><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
 					</tr>
 					<tr>
-						<td style="vertical-align: middle;">タグ</td>
+						<td>タグ</td>
 						<td><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
 
 					<% if @sort == "新着順" %>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
+						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
 
 					<% else %>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順" %> 新着順</td>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
+						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
 
 					<% end %>
 						<td><%= f.submit "検索", class: "btn btn-primary" %></td>
@@ -45,12 +45,12 @@
 					</tr>
 					<tr>
 					<% if @sort == "新着順" %>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
+						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
 
 					<% else %>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "新着順" %> 新着順</td>
-						<td style="vertical-align: middle;"><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
+						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
 
 					<% end %>
 						<td align="right"><%= f.submit "検索", class: "btn btn-primary" %></td>
@@ -60,16 +60,16 @@
 		</div>
 		<div class="row">
 			<% @posts.each do |post| %>
-				<div class="col-sm-4" style="padding: 0 5px 10px 5px;">
+				<div class="col-sm-4">
 					<%= link_to post_path(post) do %>
-						<div class="post-item shadow2" style="height: 225px; border: 0.1px solid lightgray; background-color: white;">
-							<div class="post-image" style="height: 63%;">
-								<%= attachment_image_tag post, :image, :fill, 460, 280, format: "jpeg", style: "width: 100%;" %>
+						<div class="post-item shadow2">
+							<div class="post-image">
+								<%= attachment_image_tag post, :image, :fill, 460, 280, format: "jpeg", class: "image" %>
 							</div>
-							<div class="detail" style="padding: 10px;">
-								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
+							<div class="detail">
+								<p class="limit2"><%= post.title %></p>
 
-								<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 15px;">
+								<div class="post-footer" id="like-<%= post.id %>">
 
 									<%= render "like", post: post %>
 
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 	<div class="col-sm-3" style="padding: 0;">
-		<div class="category-list shadow2" style="border: 1px solid lightgray; background-color: white;">
+		<div class="category-list shadow2">
 			<table class="table">
 				<thead>
 					<tr>

@@ -51,15 +51,15 @@
 	<div class="row" style="padding: 15px;">
 		<% if @tab == "記事一覧" || @tab == "いいね" %>
 			<% @posts.each do |post| %>
-				<div class="col-sm-4" style="padding: 5px 5px 0 5px;">
+				<div class="col-sm-4">
 					<%= link_to post_path(post) do %>
-						<div class="post-item-mypage shadow-hover" style="height: 210px; border: 0.1px solid lightgray">
+						<div class="post-item-mypage shadow-hover">
 							<div class="post-image" style="height: 60%;">
 								<%= attachment_image_tag post, :image, :fill, 400, 240, format: "jpeg", style: "width: 100%;" %>
 							</div>
-							<div class="detail" style="padding: 10px;">
+							<div class="detail">
 								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
-								<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 5px;">
+								<div class="post-footer" id="like-<%= post.id %>">
 
 									<%= render "users/posts/like", post: post %>
 

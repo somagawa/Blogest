@@ -1,6 +1,6 @@
 <div class="row">
-	<div class="col-md-3" style="padding: 5px;">
-		<table class="table shadow2" style="border: 1px solid lightgray; background-color: white;">
+	<div class="side-bar col-md-3">
+		<table class="table post-rank shadow2">
 			<thead>
 				<tr class="active">
 					<th colspan="2">記事ランキング</th>
@@ -8,7 +8,7 @@
 			</thead>
 			<tbody>
 				<% @post_ranks.each_with_index do |post_rank, i| %>
-				<tr style="border-top: 1px solid lightgray;">
+				<tr>
 					<td style="width: 30px;">
 						<% if i == 0 %>
 							<%= image_tag "1.jpg", alt: "サブタイトル", width: "20px" %>
@@ -22,13 +22,13 @@
 							<%= image_tag "5.jpg", alt: "サブタイトル", width: "20px" %>
 						<% end %>
 					<td>
-						<%= link_to post_rank.title, post_path(post_rank), style: "color: gray; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden;" %>
+						<%= link_to post_rank.title, post_path(post_rank), class: "limit1" %>
 					</td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
-		<table class="table shadow2" style="border: 1px solid lightgray; margin-top: 20px; background-color: white;">
+		<table class="table user-rank shadow2">
 			<thead>
 				<tr class="active">
 					<th colspan="2">人気クリエイター</th>
@@ -36,7 +36,7 @@
 			</thead>
 			<tbody>
 				<% @users.each_with_index do |user, i| %>
-				<tr style="border-top: 1px solid lightgray;">
+				<tr>
 					<td style="width: 30px;">
 						<% if i == 0 %>
 							<%= image_tag "1.jpg", alt: "サブタイトル", width: "20px" %>
@@ -51,47 +51,46 @@
 						<% end %>
 					</td>
 					<td>
-						<%= link_to user.name, user_path(user), style: "color: gray; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden;" %>
+						<%= link_to user.name, user_path(user), class: "limit1" %>
 					</td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
-	<div class="col-md-7">
+	<div class="post-list col-md-7">
 		<div class="row">
 			<% @posts.each do |post| %>
-				<div class="col-sm-4" style="padding: 0 5px 10px 5px;">
+				<div class="col-sm-4">
 					<%= link_to post_path(post) do %>
-						<div class="post-item shadow2" style="height: 225px; border: 0.1px solid lightgray; background-color: white;">
-							<div class="post-image" style="height: 63%;">
-								<%= attachment_image_tag post, :image, :fill, 460, 280, format: "jpeg", style: "width: 100%;" %>
+						<div class="post-item shadow2">
+							<div class="post-image">
+								<%= attachment_image_tag post, :image, :fill, 460, 280, format: "jpeg", class: "image" %>
 							</div>
-							<div class="detail" style="padding: 10px;">
-								<p style="font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;"><%= post.title %></p>
+							<div class="detail">
+								<p class="limit2"><%= post.title %></p>
 
-							<div class="footer" id="like-<%= post.id %>" style="position: absolute; bottom: 10px;">
-								<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-								<span style="font-size: 12px;"><%= post.likes.count %></span>
-								<span style="margin-left: 8px; font-size: 12px;"><%= post.created_at.to_s(:datetime) %></span>
+								<div class="post-footer" id="like-<%= post.id %>">
+									<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+									<span><%= post.likes.count %></span>
+									<span style="margin-left: 8px;"><%= post.created_at.to_s(:datetime) %></span>
+								</div>
 							</div>
 						</div>
-					</div>
-				<% end %>
-			</div>
-		<% end %>
-
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
-	<div class="col-md-2" style="padding: 0;">
-		<div class="category-list shadow" style="border: 1px solid lightgray; background-color: white;">
+	<div class="side-bar col-md-2">
+		<div class="tag-rank shadow">
 			<table class="table">
 				<thead>
 					<tr>
 						<th class="active">人気タグ</th>
 					</tr>
 				</thead>
-				<tbody style="border-top: 1px solid lightgray;">
+				<tbody>
 					<tr>
 						<td>
 							<% @tags.each do |tag| %>

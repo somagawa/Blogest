@@ -17,12 +17,48 @@
  @import "bootstrap";
 
 
+.navbar {
+  background-color: #5f9ea0;
+  box-shadow: 0px 10px 15px -15px gray;
+  border-radius: 0;
+  border-style: none;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #dcdcdc;
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
+.container {
+  padding-bottom: 50px;
+}
+
+.footer {
+  color: white;
+  background-color: #a9a9a9;
+  margin-top: 400px;
+  padding: 60px 0 0 60px;
+  height: 100px;
+}
+
+a {
+  color: #696969;
+}
+
+a:hover {
+  color: black;
+}
+
 .table > thead > tr > th,
 .table > thead > tr > td,
 .table > tbody > tr > th,
 .table > tbody > tr > td,
 .table > tbody + tbody {
   border: none;
+  vertical-align: middle;
 }
 
 .pagination>li>a {
@@ -58,16 +94,13 @@
   transition: box-shadow 0.2s ease-out,
               transform 0.2s ease-out;
 }
+
 .shadow-hover:hover {
   box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
               rgba(0,0,0,.03) 0 -1px 0 inset,
               rgba(0,0,0,.15) 0 8px 9px,
               rgba(0,0,0,.10) 0 7px 10px;
   transform: translateY(-0.5px);
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: #dcdcdc;
 }
 
 .btn-outline-success {
@@ -81,13 +114,20 @@
   border-color: #28a745;
 }
 
-.search-form-1 {
-  display: block;
+.limit1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
-.search-form-2 {
-  display: none;
+.limit2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
+
 
 
 @media screen and (max-width: 767px) {
