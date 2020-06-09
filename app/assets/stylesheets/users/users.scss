@@ -1,3 +1,51 @@
+.sign-up {
+	max-width: 500px;
+	height: 500px;
+	padding: 60px 20px 20px 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}
+
+.sign-up-form {
+	margin-top: 30px;
+	max-width: 300px;
+}
+
+.name-form {
+	margin-bottom: 10px;
+}
+
+.email-form {
+	margin-bottom: 10px;
+}
+
+.confirm-form {
+	margin-top: 10px;
+}
+
+.sign-up-btn {
+	margin-top: 20px;
+	margin-bottom: 15px !important;
+}
+
+.sign-in {
+	max-width: 500px;
+	height: 400px;
+	padding: 60px 20px 20px 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}
+
+.sign-in-form {
+	margin-top: 30px;
+	max-width: 300px;
+}
+
+.sign-in-btn {
+	margin-top: 20px;
+	margin-bottom: 15px !important;
+}
+
 .mypage {
 	max-width: 700px;
 	padding: 20px;
@@ -11,7 +59,7 @@
 
 .post-item-mypage {
 	max-width: 300px;
-	height: 210px;
+	height: 220px;
 	border: 0.1px solid lightgray
 }
 
@@ -22,4 +70,27 @@
 
 .profile-image-td {
 	width: 57px;
+}
+
+.edit-mypage {
+	max-width: 700px;
+	padding: 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}
+
+.introduction-form {
+	height: 200px !important;
+}
+
+.destroy-page {
+	max-width: 500px;
+	height: 500px;
+	padding: 60px 20px 20px 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}
+
+.return-btn {
+	margin: 60px 0 20px 0 !important;
 }

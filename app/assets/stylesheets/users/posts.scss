@@ -12,9 +12,13 @@
 
 .post-item {
 	max-width: 375px;
-	height: 225px;
+	height: 220px;
 	border: 1px solid lightgray;
 	background-color: white;
+	position: relative;
+}
+
+.post-item-mypage {
 	position: relative;
 }
 
@@ -22,8 +26,8 @@
 	font-size: 15px;
 }
 
-.post-image {
-	height: 63%;
+.image {
+	width: 100%;
 }
 
 .detail {
@@ -35,7 +39,9 @@
 	bottom: 0px;
 }
 
-.post-content {
+.post-content,
+.new-post,
+.edit-post {
 	max-width: 600px;
 	margin-bottom: 20px;
 	border: 1px solid lightgray;
@@ -66,4 +72,30 @@
 
 #img_prev:hover {
   opacity: 0.8;
+}
+
+.text-field {
+	padding: 20px;
+}
+
+.title-field {
+	margin-bottom: 20px;
+}
+
+.tag-field {
+	margin-bottom: 40px;
+}
+
+.body-field {
+	margin-bottom: 40px;
+	height: 400px !important;
+}
+
+.post-code-field {
+	margin-bottom: 20px;
+	max-width: 280px;
+}
+
+.address-field {
+	margin-bottom: 20px;
 }

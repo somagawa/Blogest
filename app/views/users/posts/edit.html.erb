@@ -1,9 +1,9 @@
-<div class="edit-post shadow" style="max-width: 600px; border: 0.1px solid lightgray;  background-color: white;">
+<div class="edit-post shadow">
 
 	<%= form_with model: @post, local: true do |f| %>
 
 		<div class="image-field" onClick="$('#file').click()">
-			<%= attachment_image_tag @post, :image, :fill, 1200, 800, format: "jpeg", fallback: "prev_img_1.jpg", id: "img_prev", style: "width: 100%;" %>
+			<%= attachment_image_tag @post, :image, :fill, 1200, 800, format: "jpeg", fallback: "prev_img_1.jpg", id: "img_prev" %>
 		</div>
 		<%= f.attachment_field :image, style: "display: none;", id: "file" %>
 
@@ -13,15 +13,15 @@
 			<% end %>
 		<% end %>
 
-		<div class="text-field" style="padding: 20px;">
-			<%= f.text_field :title, class: "form-control", placeholder: "タイトル", style: "margin-bottom: 20px;" %>
-			<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)", style: "margin-bottom: 40px;" %>
-			<%= f.text_area :body, class: "form-control", placeholder: "本文", style: "height: 400px; margin-bottom: 40px;" %>
-			<%= f.text_field :post_code, class: "form-control", placeholder: "郵便番号", style: "max-width: 280px; margin-bottom: 20px;", id: "address_zipcode" %>
-			<%= f.text_field :address, class: "form-control", placeholder: "住所", style: "margin-bottom: 20px;", id: "address" %>
+		<div class="text-field">
+			<%= f.text_field :title, class: "title-field form-control", placeholder: "タイトル" %>
+			<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "tag-field form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)" %>
+			<%= f.text_area :body, class: "body-field form-control", placeholder: "本文" %>
+			<%= f.text_field :post_code, class: "post-code-field form-control", placeholder: "郵便番号", id: "address_zipcode" %>
+			<%= f.text_field :address, class: "address-field form-control", placeholder: "住所", id: "address" %>
 			<div class="text-right">
 				<%= f.submit "編集", class: "btn btn-primary" %>
 			</div>
 		</div>
 	<% end %>
-</div></div>
+</div>
