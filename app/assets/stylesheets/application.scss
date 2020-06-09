@@ -128,11 +128,15 @@ a:hover {
   overflow: hidden;
 }
 
+.position-top {
+  vertical-align: top !important;
+}
+
 
 
 @media screen and (max-width: 767px) {
 
-.profile-image {
+.profile_image {
   width: 50px;
   height: 50px;
   margin: 0 !important;
@@ -140,7 +144,6 @@ a:hover {
 
 .profile-image-td {
   padding: 0 !important;
-  vertical-align: middle !important;
 }
 
 .follow {
@@ -153,6 +156,12 @@ a:hover {
 
 .post-item-mypage {
   height: 300px !important;
+}
+
+.comment-profile-image {
+  width: 40px;
+  height: 40px;
+  margin: 8px !important;
 }
 
 .search-form-1 {

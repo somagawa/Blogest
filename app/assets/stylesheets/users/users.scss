@@ -1,3 +1,10 @@
+.mypage {
+	max-width: 700px;
+	padding: 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}
+
 .mypage > .row > .col-sm-4 {
 	padding: 5px 5px 0 5px !important;
 }
@@ -6,4 +13,13 @@
 	max-width: 300px;
 	height: 210px;
 	border: 0.1px solid lightgray
+}
+
+.profile_image {
+	border-radius: 50px;
+	margin-right: 20px;
+}
+
+.profile-image-td {
+	width: 57px;
 }

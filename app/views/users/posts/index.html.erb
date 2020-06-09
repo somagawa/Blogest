@@ -84,15 +84,15 @@
 			<%= paginate @posts, class: "paginate" %>
 		</div>
 	</div>
-	<div class="col-sm-3" style="padding: 0;">
-		<div class="category-list shadow2">
+	<div class="col-sm-3 side-bar">
+		<div class="tag-rank shadow2">
 			<table class="table">
 				<thead>
 					<tr>
 						<th class="active">人気タグ</th>
 					</tr>
 				</thead>
-				<tbody style="border-top: 1px solid lightgray;">
+				<tbody>
 					<tr>
 						<td>
 							<% @tags.each do |tag| %>

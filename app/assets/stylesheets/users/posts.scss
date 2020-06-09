@@ -35,6 +35,35 @@
 	bottom: 0px;
 }
 
+.post-content {
+	max-width: 600px;
+	margin-bottom: 20px;
+	border: 1px solid lightgray;
+	background-color: white;
+}
+
+.post-text {
+	padding: 20px;
+}
+
+.tag-list {
+	margin: 10px 0 10px 0;
+}
+
+.post-body {
+	margin:20px 0 40px 0;
+}
+
+.post-content-footer {
+	font-size: 17px;
+	margin-top: 20px;
+	border-bottom: 1px solid gray;
+}
+
+.creater-detail > .table {
+	margin-top: 20px;
+}
+
 #img_prev:hover {
   opacity: 0.8;
 }

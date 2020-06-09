@@ -1,47 +1,45 @@
-<div class="post shadow" style="max-width: 600px; margin-bottom: 20px; border: 0.1px solid lightgray; background-color: white;">
+<div class="post-content shadow">
 	<div class="post-image">
-		<%= attachment_image_tag @post, :image, :fill, 1200, 800, format: "jpeg", style: "width: 100%;" %>
+		<%= attachment_image_tag @post, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
 	</div>
-	<div class="detail" style="padding: 20px;">
+	<div class="post-text">
 		<h4><%= @post.title %></h4>
-		<span>
-			<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-			<%= @post.likes.count %>
-			　<%= @post.created_at.to_s(:datetime) %>
-		</span>
-		<div class="tag-list" style="margin: 10px 0 10px 0">
+		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+		<span><%= @post.likes.count %></span>
+		<span style="margin-left: 8px;"><%= @post.created_at.to_s(:datetime) %></span>
+		<div class="tag-list">
 			<% @post.tag_list.each do |tag| %>
 				<%= link_to tag, search_path(search_tag: tag, sort: "新着順"), class: "badge badge-default" %>
 			<% end %>
 		</div>
-		<p style="margin-bottom: 30px;"><%= @post.address %></p>
+		<p><%= @post.address %></p>
 		<% if @post.user == current_user %>
-			<div class="edit" style="margin: -40px 0 20px 0;" align="right">
+			<div class="edit-destroy-button" align="right">
 				<%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
 				<%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
 		</div>
 		<% end %>
-		<div class="post-body" style="margin-bottom: 40px;">
-			<%= @post.body %>
+		<div class="post-body">
+			<%= simple_format(@post.body) %>
 		</div>
 
 		<h4><%= @post.address %></h4>
 		<div id="map" style="height: 300px; background-image: url(<%= asset_path "no_map_img.jpg" %>); background-size: cover;"></div>
 
-		<div class="post-show-footer" style="font-size: 18px; margin-top: 20px;" id="like-<%= @post.id %>">
+		<div class="post-content-footer" id="like-<%= @post.id %>">
 
 			<%= render "users/posts/like", post: @post %>
 
 		</div>
-		<div class="creater-detail" style="border-top: 1px solid gray">
-			<table class="table" style="margin-top: 20px;">
+		<div class="creater-detail">
+			<table class="table">
 				<tr>
-					<td rowspan="3">
+					<td rowspan="3" class="profile-image-td position-top">
 						<%= link_to user_path(@post.user) do %>
-							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px;", class: "profile-image" %>
+							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", class: "profile-image" %>
 						<% end %>
 					</td>
-					<td colspan="2" style="vertical-align: middle;"><%= @post.user.name %></td>
+					<td colspan="2"><%= @post.user.name %></td>
 					<td id="follow-<%= @post.user.id %>" class="text-right">
 
 						<%= render "users/users/follow", user: @post.user %>
@@ -49,25 +47,25 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3"><%= @post.user.introduction %></td>
+					<td colspan="3"><%= simple_format(@post.user.introduction) %></td>
 				</tr>
 				<tr>
-					<td style="max-width: 120px;">フォロー　<%= @post.user.followings.count %></td>
+					<td>フォロー　<%= @post.user.followings.count %></td>
 					<td colspan="2">フォロワー　<%= @post.user.followers.count %></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 </div>
-<div class="comment shadow" style="max-width: 600px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
+<div class="comment shadow">
 	<p>コメント <%= @post.comments.count %>件</p>
 
 	<%= render "users/posts/comments", post: @post %>
 
-	<div class="comment-form" style="padding-top: 30px; border-top: 1px solid gray" align="right">
+	<div class="comment-form" align="right">
 		<%= form_with model: [@post, @comment] do |f| %>
-			<%= f.text_area :body, class: "form-control", id: "comment-form-body", style: "height: 100px;" %>
-			<%= f.submit "コメントする", class: "btn btn-sm btn-primary", style: "margin-top: 15px;" %>
+			<%= f.text_area :body, class: "form-control", id: "comment-form-body" %>
+			<%= f.submit "コメントする", class: "btn btn-sm btn-primary" %>
 		<% end %>
 	</div>
 </div>

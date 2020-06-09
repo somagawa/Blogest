@@ -1,7 +1,7 @@
-<div class="mypage shadow" style="max-width: 700px; padding: 20px; border: 0.1px solid lightgray; background-color: white;">
+<div class="mypage shadow">
 	<table class="table">
 		<tr>
-			<td rowspan="3" style="width: 66px;"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", :style => "border-radius: 80px; margin-right: 20px;", class: "profile-image" %></td>
+			<td rowspan="3" class="profile-image-td position-top"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg" %></td>
 			<td colspan="2" style="vertical-align: middle;"><%= @user.name %></td>
 			<td align="right">
 				<% if @user == current_user %>
@@ -16,7 +16,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4"><%= @user.introduction %></td>
+			<td colspan="4"><%= simple_format(@user.introduction) %></td>
 		</tr>
 		<tr>
 			<td style="max-width: 120px;">フォロー　<%= @user.followings.count %></td>
