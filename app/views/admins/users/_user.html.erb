@@ -1,9 +1,9 @@
-<table class="table" style="border: 1px solid gray;">
+<table class="user-item table">
 	<tr>
 		<td rowspan="2" style="padding: 0;"><%= attachment_image_tag user, :profile_image, :fill, 72, 72, format: "jpeg", fallback: "no_image.jpg", size: "72x72" %></td>
 		<td><%= user.name %></td>
 		<td></td>
-		<td rowspan="2" style="vertical-align: middle;"><%= link_to "削除", admins_user_path(user), method: :delete, remote: true, data: { confirm: "退会させますか？"}, class: "btn btn-danger" %></td>
+		<td rowspan="2"><%= link_to "削除", admins_user_path(user), method: :delete, remote: true, data: { confirm: "退会させますか？"}, class: "btn btn-danger" %></td>
 	</tr>
 	<tr>
 		<td>フォロー　<%= user.followings.count %></td>

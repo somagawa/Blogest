@@ -1,3 +1,39 @@
-// Place all the styles related to the admin::posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-post {
+	max-width: 600px;
+	margin-bottom: 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}
+
+.admin-post-detail {
+	padding: 20px;
+}
+
+.admin-tag-list {
+	margin: 10px 0 10px 0;
+}
+
+.admin-post-destroy {
+	margin: -40px 0 20px 0;
+}
+
+.admin-post-body {
+	margin-bottom: 40px;
+}
+
+.admin-post-footer {
+	font-size: 18px;
+	margin-top: 20px;
+}
+
+.admin-creater-detail {
+	border-top: 1px solid gray;
+	padding-top: 20px;
+}
+
+.admin-comment {
+	max-width: 600px;
+	padding: 20px;
+	border: 0.1px solid lightgray;
+	background-color: white;
+}

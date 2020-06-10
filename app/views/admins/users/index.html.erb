@@ -1,6 +1,6 @@
-<div class="users_list" style="max-width: 800px;">
+<div class="user-list">
 	<% @users.each do |user| %>
-		<div id="user-<%= user.id %>" style="background-color: white;">
+		<div id="user-<%= user.id %>">
 
 			<%= render "admins/users/user", user: user %>
 

@@ -1,3 +1,8 @@
-// Place all the styles related to the admin::users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-list {
+	max-width: 800px;
+}
+
+.user-item {
+	border: 1px solid gray;
+	background-color: white;
+}
