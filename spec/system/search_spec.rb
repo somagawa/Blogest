@@ -96,9 +96,9 @@ describe "検索のテスト", type: :system do
 		end
 		it "タグ、住所による絞り込みに続いて、キーワード検索ができる" do
 			click_link "tag2"
-			fill_in "address", with: post3.address
+			fill_in "#address", with: post3.address
 			click_button "検索"
-			fill_in "keyword", with: post4.title
+			fill_in "#keyword", with: post4.title
 			click_button "検索"
 
 			expect(page).to_not have_content post.title
