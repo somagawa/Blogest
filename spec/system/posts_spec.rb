@@ -181,7 +181,7 @@ describe "記事のテスト", type: :system do
 				expect(page).to have_field "comment[body]"
 			end
 			it "自分のコメントに削除リンクが表示される" do
-				expect(page).to have_link(href: comment_path(comment.id))
+				expect(page).to have_link(href: comment_path(comment))
 			end
 			it "他人のコメントに削除リンクが表示されない" do
 				expect(page).to_not have_link(href: comment_path(comment2))
