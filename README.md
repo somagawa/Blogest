@@ -44,6 +44,8 @@ WEBアプリケーションとしては王道な「ブログ」を基盤に、�
 ![画像3](./README_image_4.jpg)
 
 ## 設計書
+- ER図
+https://drive.google.com/file/d/1PFTfvio3heCFniQRhC3ytIgJVDEz4yqT/view?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1dqCoy5gZYkliHLtHzWoDS5huSI74oz52TerJzSpxaDg/edit?usp=sharing
