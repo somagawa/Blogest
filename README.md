@@ -48,6 +48,8 @@ WEBアプリケーションとしては王道な「ブログ」を基盤に、�
 https://drive.google.com/file/d/1PFTfvio3heCFniQRhC3ytIgJVDEz4yqT/view?usp=sharing
 - ワイヤーフレーム
 https://drive.google.com/file/d/16q3BsKG0lzQQkr5v94KDQt7YNNv3FxU-/view?usp=sharing
+- アプリケーション詳細設計書
+https://drive.google.com/file/d/19lJfUPFqqljeZGzq6GQ5J3LVD_Jb8wcM/view?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1dqCoy5gZYkliHLtHzWoDS5huSI74oz52TerJzSpxaDg/edit?usp=sharing
