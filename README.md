@@ -1,7 +1,11 @@
 # ばしょログ
 
+![画像１](./README_image_2.jpg)
+
 ## サイト概要
 ばしょログは共有したいスポットを記事として投稿することができます。また遊ぶ場所を探したり、旅行の計画を立てる時に、他の投稿者の記事を参考にすることもできます。
+
+http://basyolog.net
 
 ### サイトテーマ
 気軽に楽しかった場所や有意義だった場所を発信したり、スポットを検索できます。
@@ -16,7 +20,41 @@ WEBアプリケーションとしては王道な「ブログ」を基盤に、�
 ### 主な利用シーン
 旅行の計画時、友人と遊びに行く場所を探す時、デートスポットを探す時
 
+### 使用技術
+<h3>フロントエンド</h3>
+- HTML&CSS
+- Javascript
+
+<h3>バックエンド</h3>
+- Ruby
+- Ruby on Rails
+
+<h3>インフラ</h3>
+- AWS(EC2、RDS)
+- Docker、docker-compose
+
+<h3>その他</h3>
+- Rspec
+- MySQL
+
+## 主な機能
+- キーワード、住所、タグによるシームレスな検索機能
+![画像2](./README_image_3.jpg)
+- ランキング機能
+![画像3](./README_image_4.jpg)
+- 記事投稿機能
+- 記事編集機能
+- いいね機能
+- フォロー機能
+- 地図表示機能
+
 ## 設計書
+- ER図
+https://drive.google.com/file/d/1PFTfvio3heCFniQRhC3ytIgJVDEz4yqT/view?usp=sharing
+- ワイヤーフレーム
+https://drive.google.com/file/d/16q3BsKG0lzQQkr5v94KDQt7YNNv3FxU-/view?usp=sharing
+- アプリケーション詳細設計書
+https://drive.google.com/file/d/19lJfUPFqqljeZGzq6GQ5J3LVD_Jb8wcM/view?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1dqCoy5gZYkliHLtHzWoDS5huSI74oz52TerJzSpxaDg/edit?usp=sharing
