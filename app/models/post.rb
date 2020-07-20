@@ -5,9 +5,10 @@ class Post < ApplicationRecord
 
 	has_many :comments, dependent: :destroy
 	has_many :likes, dependent: :destroy
+	has_many :post_images, dependent: :destroy
 	belongs_to :user
 
-	attachment :image
+	accepts_attachments_for :post_images, attachment: :image
 
 	acts_as_taggable
 

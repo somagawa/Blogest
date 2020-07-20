@@ -49,11 +49,15 @@ body {
 }
 
 a {
-  color: #696969;
+  color: black;
 }
 
 a:hover {
   color: black;
+}
+
+.badge-default {
+  background-color: black;
 }
 
 .table > thead > tr > th,

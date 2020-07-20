@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_151034) do
+ActiveRecord::Schema.define(version: 2020_07_19_144424) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,10 +42,16 @@ ActiveRecord::Schema.define(version: 2020_05_29_151034) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "post_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "post_id"
+    t.string "image_id"
+  end
+
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
