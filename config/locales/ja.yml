@@ -11,6 +11,7 @@ ja:
     models:
       post: "記事"
       comment: "コメント"
+      post_images: "画像"
     attributes:
       user:
         email: "メールアドレス"
@@ -20,3 +21,9 @@ ja:
       post:
         title: "タイトル"
         body: "本文"
+      post_images:
+        image: "画像"
+
+  errors:
+    messages:
+      invalid: "の枚数が上限を超えています"

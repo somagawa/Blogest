@@ -1,6 +1,10 @@
 <div class="post-content shadow">
 	<div class="post-image">
-		<%= attachment_image_tag @post, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
+		<div id="slider">
+			<% @post.post_images.each do |post_image| %>
+				<%= attachment_image_tag post_image, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
+			<% end %>
+		</div>
 	</div>
 	<div class="post-text">
 		<h4><%= @post.title %></h4>
@@ -17,7 +21,7 @@
 			<div class="edit-destroy-button" align="right">
 				<%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
 				<%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
-		</div>
+			</div>
 		<% end %>
 		<div class="post-body">
 			<%= simple_format(@post.body) %>

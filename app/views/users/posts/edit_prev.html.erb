@@ -1,0 +1,64 @@
+<div class="post-content shadow">
+	<div class="post-image">
+		<div id="slider">
+			<% @post.post_images.each do |post_image| %>
+				<%= attachment_image_tag post_image, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="post-text">
+		<h4><%= @post.title %></h4>
+		<div class="tag-list">
+			<% @post.tag_list.each do |tag| %>
+				<span class="badge badge-default"><%= tag %></span>
+			<% end %>
+		</div>
+		<p><%= @post.address %></p>
+		<div class="post-body">
+			<%= simple_format(@post.body) %>
+		</div>
+
+		<h4><%= @post.address %></h4>
+		<div id="map" style="height: 300px; background-image: url(<%= asset_path "no_map_img.jpg" %>); background-size: cover;"></div>
+
+		<%= form_with model: @post, local: true do |f| %>
+			<%= f.hidden_field :post_images_images, :value => @post.post_images %>
+			<%= f.hidden_field :title, :value => @post.title %>
+			<%= f.hidden_field :tag_list, :value => @post.tag_list.join(',') %>
+			<%= f.hidden_field :body, :value => @post.body %>
+			<%= f.hidden_field :post_code, :value => @post.post_code %>
+			<%= f.hidden_field :address, :value => @post.address %>
+			<%= f.submit "編集" %>
+		<% end %>
+	</div>
+</div>
+
+
+<% if @map != nil %>
+	<script>
+	function initMap(){
+	  var pos = {lat: <%= @map[0] %>, lng: <%= @map[1] %>};
+
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	  	center: pos,
+	  	zoom: 15
+	  });
+
+	  var infowindow = new google.maps.InfoWindow({
+	  	content: "<%= @post.address %>"
+	  });
+
+	  var marker = new google.maps.Marker({
+	    position: pos,
+	    map: map,
+	    title: "<%= @post.address %>"
+	　});
+
+	  marker.addListener('click', function() {
+	    infowindow.open(map, marker);
+	  });
+	}
+
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV.fetch("API_KEY") %>&callback=initMap" async defer></script>
+<% end %>

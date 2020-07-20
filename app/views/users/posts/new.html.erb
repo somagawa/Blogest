@@ -2,11 +2,6 @@
 
 	<%= form_with model: @post, local: true do |f| %>
 
-		<div class="image-field" onClick="$('#file').click()">
-			<%= attachment_image_tag @post, :image, :fill, 1200, 800, format: "jpeg", fallback: "prev_img_1.jpg", id: "img_prev" %>
-		</div>
-		<%= f.attachment_field :image, style: "display: none;", id: "file" %>
-
 		<% if @post.errors.any? %>
 			<% @post.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
@@ -14,6 +9,7 @@
 		<% end %>
 
 		<div class="text-field" style="padding: 20px;">
+			<%= f.attachment_field :post_images_images, multiple: true, id: "file" %>
 			<%= f.text_field :title, class: "title-field form-control", placeholder: "タイトル" %>
 			<%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "tag-field form-control", placeholder: "タグ（複数のタグを付けるときは , で区切ってください)" %>
 			<%= f.text_area :body, class: "body-field form-control", placeholder: "本文" %>

@@ -65,7 +65,7 @@
 					<%= link_to post_path(post) do %>
 						<div class="post-item shadow2">
 							<div class="post-image">
-								<%= attachment_image_tag post, :image, :fill, 345, 210, format: "jpeg", class: "image" %>
+								<%= attachment_image_tag post.post_images[0], :image, :fill, 345, 210, format: "jpeg", class: "image" %>
 							</div>
 							<div class="detail">
 								<p class="limit2"><%= post.title %></p>
