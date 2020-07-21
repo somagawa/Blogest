@@ -1,5 +1,25 @@
 <div class="row">
-	<div class="main-content col-sm-9">
+	<div class="side-bar col-sm-3 col-sm-push-9">
+		<div class="tag-rank shadow2">
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="active">人気タグ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<% @tags.each do |tag| %>
+								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, sort: @sort), class: "badge badge-default" %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="main-content col-sm-9 col-sm-pull-3">
 		<div class="search-form-1">
 			<table class="table">
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -82,26 +102,6 @@
 		</div>
 		<div class="pagenation" align="center">
 			<%= paginate @posts, class: "paginate" %>
-		</div>
-	</div>
-	<div class="col-sm-3 side-bar">
-		<div class="tag-rank shadow2">
-			<table class="table">
-				<thead>
-					<tr>
-						<th class="active">人気タグ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<% @tags.each do |tag| %>
-								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, sort: @sort), class: "badge badge-default" %>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</div>
 </div>
