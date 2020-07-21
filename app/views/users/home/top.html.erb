@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="side-bar col-md-3">
-		<table class="table post-rank shadow2">
+		<table class="table post-rank shadow">
 			<thead>
-				<tr class="active">
+				<tr>
 					<th colspan="2">記事ランキング</th>
 				</tr>
 			</thead>
@@ -28,9 +28,9 @@
 				<% end %>
 			</tbody>
 		</table>
-		<table class="table user-rank shadow2">
+		<table class="table user-rank shadow">
 			<thead>
-				<tr class="active">
+				<tr>
 					<th colspan="2">人気クリエイター</th>
 				</tr>
 			</thead>
@@ -58,12 +58,32 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="post-list col-md-7">
+	<div class="side-bar col-md-2 col-md-push-7">
+		<div class="tag-rank shadow">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>人気タグ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<% @tags.each do |tag| %>
+								<%= link_to tag, search_path(search_tag: tag.name, sort: "新着順"), class: "badge badge-default" %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="post-list col-md-7 col-md-pull-2">
 		<div class="row">
 			<% @posts.each do |post| %>
 				<div class="col-lg-4 col-md-6 col-sm-4">
 					<%= link_to post_path(post) do %>
-						<div class="post-item shadow2">
+						<div class="post-item shadow">
 							<div class="post-image">
 								<%= attachment_image_tag post.post_images[0], :image, :fill, 345, 210, format: "jpeg", class: "image" %>
 							</div>
@@ -82,25 +102,4 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="side-bar col-md-2">
-		<div class="tag-rank shadow">
-			<table class="table">
-				<thead>
-					<tr>
-						<th class="active">人気タグ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<% @tags.each do |tag| %>
-								<%= link_to tag, search_path(search_tag: tag.name, sort: "新着順"), class: "badge badge-default" %>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>
 </div>

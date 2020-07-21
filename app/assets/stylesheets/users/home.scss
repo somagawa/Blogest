@@ -3,13 +3,14 @@
 }
 
 .post-rank,
-.tag-rank {
-	border: 1px solid lightgray;
+.tag-rank,
+.user-rank {
 	background-color: white;
+	margin-bottom: 10px !important;
 }
 
 .user-rank {
-	margin-top: 20px;
+	margin-bottom: 10px !important;
 }
 
 .col-lg-4,
@@ -20,6 +21,3 @@
 	padding: 0 5px 10px 5px !important;
 }
 
-th {
-	border-bottom: 1px solid lightgray !important;
-}

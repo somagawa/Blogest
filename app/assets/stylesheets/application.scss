@@ -18,7 +18,7 @@
 
 
 body {
-  background-color: #f5f5f5;
+  background-color: #dcdcdc;
 }
 
 .navbar {
@@ -69,6 +69,10 @@ a:hover {
   vertical-align: middle;
 }
 
+.active {
+
+}
+
 .pagination>li>a {
   border: none;
   color: #696969;
@@ -85,10 +89,7 @@ a:hover {
 }
 
 .shadow {
-  box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
-              rgba(0,0,0,.03) 0 -1px 0 inset,
-              rgba(0,0,0,.15) 0 12px 9px,
-              rgba(0,0,0,.10) 0 7px 10px;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.4);
 }
 
 .shadow2 {
@@ -149,7 +150,7 @@ a:hover {
 }
 
 @media screen and (max-width: 991px) {
-  
+
 .post-item {
   height: 250px !important;
 }
@@ -197,6 +198,21 @@ a:hover {
 
 .search-form-2 {
   display: block;
+}
+
+.col-md-4 {
+  padding: 0 0 10px 0 !important;
+}
+
+.limit2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.shadow2 {
+  box-shadow: none;
 }
 
 }

@@ -2,7 +2,6 @@
 	max-width: 500px;
 	height: 500px;
 	padding: 60px 20px 20px 20px;
-	border: 0.1px solid lightgray;
 	background-color: white;
 }
 
@@ -32,7 +31,6 @@
 	max-width: 500px;
 	height: 400px;
 	padding: 60px 20px 20px 20px;
-	border: 0.1px solid lightgray;
 	background-color: white;
 }
 
@@ -49,7 +47,6 @@
 .mypage {
 	max-width: 700px;
 	padding: 20px;
-	border: 0.1px solid lightgray;
 	background-color: white;
 }
 
@@ -60,7 +57,8 @@
 .post-item-mypage {
 	max-width: 300px;
 	height: 220px;
-	border: 0.1px solid lightgray
+	border: 0.1px solid lightgray;
+	position: relative;
 }
 
 .profile_image {
@@ -75,7 +73,6 @@
 .edit-mypage {
 	max-width: 700px;
 	padding: 20px;
-	border: 0.1px solid lightgray;
 	background-color: white;
 }
 
@@ -87,7 +84,6 @@
 	max-width: 500px;
 	height: 500px;
 	padding: 60px 20px 20px 20px;
-	border: 0.1px solid lightgray;
 	background-color: white;
 }
 
