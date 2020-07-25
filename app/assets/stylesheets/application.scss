@@ -36,6 +36,10 @@ body {
   padding: 0;
 }
 
+.navbar-brand-center {
+  display: none;
+}
+
 .container {
   padding-bottom: 50px;
 }
@@ -69,10 +73,6 @@ a:hover {
   vertical-align: middle;
 }
 
-.active {
-
-}
-
 .pagination>li>a {
   border: none;
   color: #696969;
@@ -90,13 +90,6 @@ a:hover {
 
 .shadow {
   box-shadow: 0px 2px 3px rgba(0,0,0,0.4);
-}
-
-.shadow2 {
-  box-shadow: rgba(255,255,255,.9) 0 1px 0 inset,
-              rgba(0,0,0,.03) 0 -1px 0 inset,
-              rgba(0,0,0,.15) 0 8px 9px,
-              rgba(0,0,0,.10) 0 7px 10px;
 }
 
 .shadow-hover {
@@ -161,8 +154,34 @@ a:hover {
 
 }
 
+.navbar-toggle {
+    z-index: 2;
+}
+
 
 @media screen and (max-width: 767px) {
+
+.navbar-brand-center {
+    display: inline;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align:center;
+    margin: auto;
+}
+
+.navbar-brand {
+  display: none;
+}
+
+.sign-in,.sign-up,
+.mypage,.edit-mypage,.destroy-page,
+.post-content,.comment,
+.new-post,.edit-post {
+  margin-right: -15px !important;
+  margin-left: -15px !important;
+}
 
 .profile_image {
   width: 50px;
@@ -183,7 +202,9 @@ a:hover {
 }
 
 .post-item-mypage {
-  height: 260px !important;
+  height: 250px !important;
+  max-width: 335px;
+  margin-top: 20px;
 }
 
 .comment-profile-image {
@@ -200,7 +221,8 @@ a:hover {
   display: block;
 }
 
-.col-md-4 {
+.col-md-4,
+.col-sm-4 {
   padding: 0 0 10px 0 !important;
 }
 
@@ -211,7 +233,7 @@ a:hover {
   overflow: hidden;
 }
 
-.shadow2 {
+.shadow {
   box-shadow: none;
 }
 
