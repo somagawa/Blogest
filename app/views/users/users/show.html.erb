@@ -53,7 +53,7 @@
 			<% @posts.each do |post| %>
 				<div class="col-md-4 col-sm-6">
 					<%= link_to post_path(post) do %>
-						<div class="post-item-mypage shadow-hover">
+						<div class="post-item-mypage shadow">
 							<div class="post-image">
 								<%= attachment_image_tag post.post_images[0], :image, :fill, 300, 180, format: "jpeg"%>
 							</div>
