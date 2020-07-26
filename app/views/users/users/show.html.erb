@@ -1,7 +1,7 @@
 <div class="mypage shadow">
 	<table class="table">
 		<tr>
-			<td rowspan="3" class="profile-image-td position-top"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg" %></td>
+			<td rowspan="3" class="profile-image-td position-top"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, size: "80x80", format: "jpeg", fallback: "no_image.jpg" %></td>
 			<td colspan="2"><%= @user.name %></td>
 			<td align="right">
 				<% if @user == current_user %>

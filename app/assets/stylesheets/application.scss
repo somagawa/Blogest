@@ -137,9 +137,7 @@ a:hover {
 
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-  .post-item {
-  height: 250px !important;
-  }
+
 }
 
 @media screen and (max-width: 991px) {
@@ -198,6 +196,7 @@ a:hover {
 }
 
 .post-item {
+  max-width: 400px;
   height: 320px !important;
 }
 

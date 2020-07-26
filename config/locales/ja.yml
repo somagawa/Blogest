@@ -12,6 +12,7 @@ ja:
       post: "記事"
       comment: "コメント"
       post_images: "画像"
+      category: "ジャンル"
     attributes:
       user:
         email: "メールアドレス"
@@ -21,6 +22,9 @@ ja:
       post:
         title: "タイトル"
         body: "本文"
+        category_id: "ジャンル"
+      category:
+        name: "ジャンル"
       post_images:
         image: "画像"
 

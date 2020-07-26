@@ -1,11 +1,12 @@
 class Users::PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit]
 
   def index
       @posts = Post.page(params[:page]).order(created_at: :desc)
       @tags = ActsAsTaggableOn::Tag.most_used(50)
       @tag_form = ""
+      @category_form = ""
       @sort = "新着順"
   end
 
@@ -52,28 +53,29 @@ class Users::PostsController < ApplicationController
 
   def search
     if params[:search_tag] != "" && params[:sort] == "新着順"
-      @posts = Post.search(params[:keyword], params[:address]).tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
+      @posts = Post.search(params[:keyword], params[:address], params[:category]).tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
 
     elsif params[:search_tag] != "" && params[:sort] == "いいね順"
       post_like_count = Post.joins(:likes).group(:post_id).count
       post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
       post_ranking = Post.where(id: post_liked_ids)
-      @posts = post_ranking.search(params[:keyword], params[:address]).tagged_with(params[:search_tag]).page(params[:page])
+      @posts = post_ranking.search(params[:keyword], params[:address], params[:category]).tagged_with(params[:search_tag]).page(params[:page])
 
     elsif params[:search_tag] == "" && params[:sort] == "新着順"
-      @posts = Post.search(params[:keyword], params[:address]).page(params[:page]).order(created_at: :desc)
+      @posts = Post.search(params[:keyword], params[:address], params[:category]).page(params[:page]).order(created_at: :desc)
 
     else
       post_like_count = Post.joins(:likes).group(:post_id).count
       post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
       post_ranking = Post.where(id: post_liked_ids)
-      @posts = post_ranking.search(params[:keyword], params[:address]).page(params[:page])
+      @posts = post_ranking.search(params[:keyword], params[:address], params[:category]).page(params[:page])
 
     end
     @tags = ActsAsTaggableOn::Tag.most_used(50)
     @keyword_form = params[:keyword]
     @address_form = params[:address]
     @tag_form = params[:search_tag]
+    @category_form = params[:category]
     @sort = params[:sort]
     render 'index'
   end
@@ -81,7 +83,7 @@ class Users::PostsController < ApplicationController
   private
 
   def post_params
-  	params.require(:post).permit(:title, :body, :post_code, :address, :tag_list, post_images_images: [])
+  	params.require(:post).permit(:title, :body, :post_code, :address, :tag_list, :category_id, post_images_images: [])
   end
 
   def ensure_correct_user

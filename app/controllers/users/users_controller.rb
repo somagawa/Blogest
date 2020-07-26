@@ -1,10 +1,6 @@
 class Users::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update, :destroy_page]
   before_action :ensure_correct_user, only: [:edit]
-
-  def index
-  	@users = User.page(params[:page])
-  end
 
   def show
     @user = User.find(params[:id])
