@@ -13,7 +13,7 @@
 		<span style="margin-left: 8px;"><%= @post.created_at.to_s(:datetime) %></span>
 		<div class="tag-list">
 			<% @post.tag_list.each do |tag| %>
-				<%= link_to tag, search_path(search_tag: tag, sort: "新着順"), class: "badge badge-default" %>
+				<%= link_to tag, search_path(search_tag: tag, category: "", sort: "新着順"), class: "badge badge-default" %>
 			<% end %>
 		</div>
 		<p><%= @post.address %></p>
@@ -40,7 +40,7 @@
 				<tr>
 					<td rowspan="3" class="profile-image-td position-top">
 						<%= link_to user_path(@post.user) do %>
-							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, format: "jpeg", fallback: "no_image.jpg", class: "profile-image" %>
+							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, size: "80x80", format: "jpeg", fallback: "no_image.jpg", class: "profile-image" %>
 						<% end %>
 					</td>
 					<td colspan="2"><%= @post.user.name %></td>
@@ -67,9 +67,14 @@
 	<%= render "users/posts/comments", post: @post %>
 
 	<div class="comment-form" align="right">
-		<%= form_with model: [@post, @comment] do |f| %>
-			<%= f.text_area :body, class: "form-control", id: "comment-form-body" %>
-			<%= f.submit "コメントする", class: "btn btn-sm btn-primary" %>
+		<% if user_signed_in? %>
+			<%= form_with model: [@post, @comment] do |f| %>
+				<%= f.text_area :body, class: "form-control", id: "comment-form-body" %>
+				<%= f.submit "コメントする", class: "btn btn-sm btn-primary" %>
+			<% end %>
+		<% else %>
+			<%= image_tag "comment.jpg", alt: "サブタイトル", width: "100%" %>
+			<%= link_to "コメントする", new_user_registration_path, class: "btn btn-sm btn-primary", style: "margin-top: 10px;" %>
 		<% end %>
 	</div>
 </div>

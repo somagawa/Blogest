@@ -1,12 +1,20 @@
-<% if post.liked_by?(current_user) %>
-	<% like = Like.find_by(user_id: current_user.id, post_id: post.id) %>
-	<%= link_to like_path(like), method: :delete, remote: true do %>
-		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
-	<% end %>
+<% if user_signed_in? %>
+  <% if post.liked_by?(current_user) %>
+    <% like = Like.find_by(user_id: current_user.id, post_id: post.id) %>
+    <%= link_to like_path(like), method: :delete, remote: true do %>
+      <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
+    <% end %>
+  <% else %>
+    <%= link_to post_likes_path(post), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: gray;">
+    <% end %>
+  <% end %>
+  <span><%= post.likes.count %></span>
+  <span style="margin-left: 12px;"><%= post.created_at.to_s(:datetime) %></span>
 <% else %>
-	<%= link_to post_likes_path(post), method: :post, remote: true do %>
-		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: gray;">
-	<% end %>
+  <%= link_to new_user_registration_path do %>
+    <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
+  <% end %>
+  <span><%= post.likes.count %></span>
+  <span style="margin-left: 12px;"><%= post.created_at.to_s(:datetime) %></span>
 <% end %>
-<span><%= post.likes.count %></span>
-<span style="margin-left: 12px;"><%= post.created_at.to_s(:datetime) %></span>

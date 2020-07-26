@@ -95,7 +95,7 @@
 								<p class="limit2"><%= post.title %></p>
 								<div class="limit1">
 									<% post.tag_list.each do |tag| %>
-										<span class="badge badge-default"><%= tag %></span>
+										<%= link_to tag, search_path(search_tag: @tag_form + "," + tag, keyword: @keyword_form, address: @address_form, category: @category_form, sort: @sort), class: "badge badge-default" %>
 									<% end %>
 								</div>
 								<div class="post-footer" id="like-<%= post.id %>">
