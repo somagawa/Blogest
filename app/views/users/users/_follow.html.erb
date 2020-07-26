@@ -1,14 +1,21 @@
-<% if current_user != user %>
-	<% if user.followed_by?(current_user) %>
-		<% relationship = Relationship.find_by(following_id: current_user.id, follower_id: user.id) %>
-		<%= link_to relationship_path(relationship), method: :delete, remote: true, class: "btn btn-success" do %>
-		 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-		 <span class="glyphicon glyphicon-ok" style="font-size: 10px;" aria-hidden="true"></span>
+<% if user_signed_in? %>
+	<% if current_user != user %>
+		<% if user.followed_by?(current_user) %>
+			<% relationship = Relationship.find_by(following_id: current_user.id, follower_id: user.id) %>
+			<%= link_to relationship_path(relationship), method: :delete, remote: true, class: "btn btn-success" do %>
+			 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+			 <span class="glyphicon glyphicon-ok" style="font-size: 10px;" aria-hidden="true"></span>
+			<% end %>
+		<% else %>
+			<%= link_to user_relationships_path(user), method: :post, remote: true, class: "btn btn-outline-success" do %>
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-plus" style="font-size: 10px;" aria-hidden="true"></span>
+			<% end %>
 		<% end %>
-	<% else %>
-		<%= link_to user_relationships_path(user), method: :post, remote: true, class: "btn btn-outline-success" do %>
-			<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-			<span class="glyphicon glyphicon-plus" style="font-size: 10px;" aria-hidden="true"></span>
-		<% end %>
+	<% end %>
+<% else %>
+	<%= link_to new_user_registration_path, class: "btn btn-outline-success" do %>
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-plus" style="font-size: 10px;" aria-hidden="true"></span>
 	<% end %>
 <% end %>

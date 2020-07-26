@@ -13,12 +13,12 @@ Rails.application.routes.draw do
   		resources :comments, only: [:create, :destroy]
   		resources :likes, only: [:create, :destroy]
   	end
-
     get 'search' => 'posts#search'
   end
 
   namespace :admins do
   	resources :users, only: [:index, :destroy]
   	resources :posts, only: [:index, :show, :destroy]
+    resources :categories, only: [:new, :create, :update, :destroy]
   end
 end

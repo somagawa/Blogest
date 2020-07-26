@@ -7,9 +7,11 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
@@ -44,6 +46,11 @@
               <%= link_to root_path, class: "navbar-brand" do %>
                 <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
               <% end %>
+              <div class="navbar-brand-center">
+                <%= link_to root_path do %>
+                  <%= image_tag "logo_2.jpg", alt: "サブタイトル", width: "170px" %>
+                <% end %>
+              </div>
             <% end %>
           </div>
 
@@ -60,6 +67,7 @@
                 <li><%= link_to "記事一覧", admins_posts_path %></li>
                 <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
               <% else %>
+                <li><%= link_to "記事一覧", posts_path %></li>
                 <li><%= link_to "ログイン", new_user_session_path %></li>
                 <li><%= link_to "新規登録", new_user_registration_path %></li>
               <% end %>

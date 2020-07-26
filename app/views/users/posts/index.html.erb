@@ -1,32 +1,54 @@
 <div class="row">
-	<div class="main-content col-sm-9">
+	<div class="side-bar col-sm-3 col-sm-push-9">
+		<div class="tag-rank shadow">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>人気タグ</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<% @tags.each do |tag| %>
+								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, category: @category_form, sort: @sort), class: "badge badge-default" %>
+							<% end %>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="main-content col-sm-9 col-sm-pull-3">
 		<div class="search-form-1">
 			<table class="table">
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
 					<tr>
 						<td>キーワード</td>
 						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
-						<td></td>
-						<td></td>
+					</tr>
+					<tr>
+						<td>タグ</td>
+						<td colspan="3"><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
 					</tr>
 					<tr>
 						<td>住所または地名</td>
 						<td colspan="4"><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
 					</tr>
 					<tr>
-						<td>タグ</td>
-						<td><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
+						<td>ジャンル</td>
+						<td><%= f.collection_select :category, Category.all, :id, :name, { include_blank: "--ジャンル--", selected: @category_form}, { class: "form-control" } %></td>
 
 					<% if @sort == "新着順" %>
-						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
-						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+						<td style="text-align: right;"><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
+						<td style="text-align: right;"><%= f.radio_button :sort, "いいね順" %> いいね順</td>
 
 					<% else %>
-						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
-						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+						<td style="text-align: right;"><%= f.radio_button :sort, "新着順" %> 新着順</td>
+						<td style="text-align: right;"><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
 
 					<% end %>
-						<td><%= f.submit "検索", class: "btn btn-primary" %></td>
+						<td style="text-align: right;"><%= f.submit "検索", class: "btn btn-primary" %></td>
 					</tr>
 				<% end %>
 			</table>
@@ -38,10 +60,13 @@
 						<td colspan="3"><%= f.text_field :keyword, value: @keyword_form, placeholder: "キーワード", class: "form-control" %></td>
 					</tr>
 					<tr>
+						<td colspan="3"><%= f.text_field :search_tag, value: @tag_form, placeholder: "タグ", class: "form-control" %></td>
+					</tr>
+					<tr>
 						<td colspan="3"><%= f.text_field :address, value: @address_form, placeholder: "住所または地名", class: "form-control" %></td>
 					</tr>
 					<tr>
-						<td colspan="3"><%= f.text_field :search_tag, value: @tag_form, placeholder: "タグ", class: "form-control" %></td>
+						<td colspan="3"><%= f.collection_select :category, Category.all, :id, :name, { include_blank: "--ジャンル--", selected: @category_form}, { class: "form-control" } %></td>
 					</tr>
 					<tr>
 					<% if @sort == "新着順" %>
@@ -62,13 +87,17 @@
 			<% @posts.each do |post| %>
 				<div class="col-md-4 col-sm-6">
 					<%= link_to post_path(post) do %>
-						<div class="post-item shadow2">
+						<div class="post-item shadow">
 							<div class="post-image">
-								<%= attachment_image_tag post, :image, :fill, 345, 210, format: "jpeg", class: "image" %>
+								<%= attachment_image_tag post.post_images[0], :image, :fill, 345, 210, format: "jpeg", class: "image" %>
 							</div>
 							<div class="detail">
 								<p class="limit2"><%= post.title %></p>
-
+								<div class="limit1">
+									<% post.tag_list.each do |tag| %>
+										<%= link_to tag, search_path(search_tag: @tag_form + "," + tag, keyword: @keyword_form, address: @address_form, category: @category_form, sort: @sort), class: "badge badge-default" %>
+									<% end %>
+								</div>
 								<div class="post-footer" id="like-<%= post.id %>">
 
 									<%= render "like", post: post %>
@@ -82,26 +111,6 @@
 		</div>
 		<div class="pagenation" align="center">
 			<%= paginate @posts, class: "paginate" %>
-		</div>
-	</div>
-	<div class="col-sm-3 side-bar">
-		<div class="tag-rank shadow2">
-			<table class="table">
-				<thead>
-					<tr>
-						<th class="active">人気タグ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<% @tags.each do |tag| %>
-								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, sort: @sort), class: "badge badge-default" %>
-							<% end %>
-						</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</div>
 </div>

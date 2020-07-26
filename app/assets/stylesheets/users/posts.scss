@@ -11,14 +11,9 @@
 }
 
 .post-item {
-	max-width: 375px;
-	height: 220px;
-	border: 1px solid lightgray;
+	max-width: 430px;
+	height: 250px;
 	background-color: white;
-	position: relative;
-}
-
-.post-item-mypage {
 	position: relative;
 }
 
@@ -31,7 +26,7 @@
 }
 
 .detail {
-	padding: 10px;
+	padding: 5px;
 }
 
 .post-footer {
@@ -44,7 +39,6 @@
 .edit-post {
 	max-width: 600px;
 	margin-bottom: 20px;
-	border: 1px solid lightgray;
 	background-color: white;
 }
 
@@ -75,7 +69,12 @@
 }
 
 .text-field {
-	padding: 20px;
+	padding: 40px 20px 20px 20px;
+}
+
+.category-field {
+	margin: 40px 0 20px 0;
+	max-width: 250px;
 }
 
 .title-field {
@@ -98,4 +97,13 @@
 
 .address-field {
 	margin-bottom: 20px;
+}
+
+.slick-arrow {
+	display: none !important;
+}
+
+.label {
+	display: inline-block !important;
+	height: 23px !important;
 }
