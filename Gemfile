@@ -84,3 +84,5 @@ gem 'hirb-unicode'
 gem 'pry-rails'
 
 gem 'mysql2'
+
+gem 'rails-i18n'

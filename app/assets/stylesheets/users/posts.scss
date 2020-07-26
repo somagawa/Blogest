@@ -12,7 +12,7 @@
 
 .post-item {
 	max-width: 430px;
-	height: 220px;
+	height: 250px;
 	background-color: white;
 	position: relative;
 }
@@ -69,11 +69,16 @@
 }
 
 .text-field {
-	padding: 20px;
+	padding: 40px 20px 20px 20px;
+}
+
+.category-field {
+	margin: 40px 0 20px 0;
+	max-width: 250px;
 }
 
 .title-field {
-	margin: 20px 0 20px 0;
+	margin-bottom: 20px;
 }
 
 .tag-field {
@@ -96,4 +101,9 @@
 
 .slick-arrow {
 	display: none !important;
+}
+
+.label {
+	display: inline-block !important;
+	height: 23px !important;
 }
