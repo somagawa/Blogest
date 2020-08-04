@@ -1,5 +1,5 @@
 FactoryBot.define do
 	factory :comment do
-		body { Faker::Lorem.characters(number:100) }
+		body { "コメント本文コメント本文" }
 	end
 end

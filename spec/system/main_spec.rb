@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "アクセス権限のテスト", type: :system do
 	let(:user) { create(:user) }
 	let(:admin) { create(:user) }
-	let(:post) { create(:post, user_id: user.id) }
 	subject { current_path }
 	context "管理者がログインしていない場合" do
 		before do
@@ -28,16 +27,8 @@ describe "アクセス権限のテスト", type: :system do
 			fill_in "admin[password]", with: admin.password
 			click_button "ログイン"
 		end
-		it "会員詳細画面に遷移できない" do
-			visit user_path(user)
-			is_expected.to eq new_user_session_path
-		end
-		it "記事一覧画面に遷移できない" do
-			visit posts_path
-			is_expected.to eq new_user_session_path
-		end
-		it "記事詳細画面に遷移できない" do
-			visit post_path(post)
+		it "新規投稿画面に遷移できない" do
+			visit new_post_path
 			is_expected.to eq new_user_session_path
 		end
 	end
