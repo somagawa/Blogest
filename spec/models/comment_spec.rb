@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe "Commentモデル", type: :model do
 	describe "バリデーションのテスト" do
 		let(:user) { create(:user) }
-		let(:post) { create(:post, user_id: user.id)}
+		let(:category) { create(:category)}
+		let(:post) { create(:post, user_id: user.id, category_id: category.id)}
 		let(:comment) { build(:comment, user_id: user.id, post_id: post.id) }
 		subject { comment.valid? }
 
