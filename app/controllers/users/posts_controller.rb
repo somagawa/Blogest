@@ -56,19 +56,15 @@ class Users::PostsController < ApplicationController
       @posts = Post.search(params[:keyword], params[:address], params[:category]).tagged_with(params[:search_tag]).page(params[:page]).order(created_at: :desc)
 
     elsif params[:search_tag] != "" && params[:sort] == "いいね順"
-      post_like_count = Post.joins(:likes).group(:post_id).count
-      post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
-      post_ranking = Post.where(id: post_liked_ids)
-      @posts = post_ranking.search(params[:keyword], params[:address], params[:category]).tagged_with(params[:search_tag]).page(params[:page])
+      result = Post.search(params[:keyword], params[:address], params[:category]).tagged_with(params[:search_tag])
+      @posts = result.ranking.page(params[:page])
 
     elsif params[:search_tag] == "" && params[:sort] == "新着順"
       @posts = Post.search(params[:keyword], params[:address], params[:category]).page(params[:page]).order(created_at: :desc)
 
     else
-      post_like_count = Post.joins(:likes).group(:post_id).count
-      post_liked_ids = Hash[post_like_count.sort_by{ |_, v| -v }].keys
-      post_ranking = Post.where(id: post_liked_ids)
-      @posts = post_ranking.search(params[:keyword], params[:address], params[:category]).page(params[:page])
+      result = Post.search(params[:keyword], params[:address], params[:category])
+      @posts = result.ranking.page(params[:page])
 
     end
     @tags = ActsAsTaggableOn::Tag.most_used(50)

@@ -23,4 +23,8 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.where(following_id: user.id).exists?
   end
+
+  def self.ranking
+    joins(:passive_relationships).group(:follower_id).order('count(follower_id) desc')
+  end
 end
