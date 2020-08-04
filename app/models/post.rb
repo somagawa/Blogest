@@ -18,6 +18,10 @@ class Post < ApplicationRecord
 		likes.where(user_id: user.id).exists?
 	end
 
+  def self.ranking
+    joins(:likes).group(:post_id).order('count(post_id) desc')
+  end
+
 	def self.search(keyword, address, category)
 		if category == ""
 			where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"]).where("address like?", "%#{address}%")
