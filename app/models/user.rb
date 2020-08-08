@@ -19,6 +19,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :following
 
   attachment :profile_image
+  attachment :cover_image
 
   def followed_by?(user)
     passive_relationships.where(following_id: user.id).exists?

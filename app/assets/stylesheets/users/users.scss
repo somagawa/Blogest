@@ -46,8 +46,11 @@
 
 .mypage {
 	max-width: 700px;
-	padding: 20px;
 	background-color: white;
+}
+
+.mypage-bottom {
+	padding: 20px;
 }
 
 .mypage > .row > .col-sm-4 {
@@ -71,8 +74,11 @@
 
 .edit-mypage {
 	max-width: 700px;
-	padding: 20px;
 	background-color: white;
+}
+
+.edit-detail {
+	padding: 20px !important;
 }
 
 .introduction-form {
