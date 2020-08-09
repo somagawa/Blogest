@@ -1,6 +1,6 @@
 <div class="post-content shadow">
 	<div class="post-image">
-		<div id="slider">
+		<div>
 			<% @post.post_images.each do |post_image| %>
 				<%= attachment_image_tag post_image, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
 			<% end %>
@@ -61,6 +61,32 @@
 		</div>
 	</div>
 </div>
+<div class="related-posts shadow">
+	<% @relation.each_with_index do |post, i| %>
+		<div class="slider-1">
+			<div class="row">
+				<% if i == 0 || i == 1 || i == 2 %>
+
+				<% end %>
+			</div>
+		</div>
+		<div class="slider-2">
+			<div class="row">
+				<% if i == 3 || i == 4 || i == 5 %>
+
+				<% end %>
+			</div>
+		</div>
+		<div class="slider-3">
+			<div class="row">
+				<% if i == 6 || i == 7 || i == 8 %>
+
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
 <div class="comment shadow">
 	<p>コメント <%= @post.comments.count %>件</p>
 
