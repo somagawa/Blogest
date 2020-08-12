@@ -61,30 +61,76 @@
 		</div>
 	</div>
 </div>
-<div class="related-posts shadow">
-	<% @relation.each_with_index do |post, i| %>
+<div class="related-posts shadow" id="slider">
 		<div class="slider-1">
 			<div class="row">
-				<% if i == 0 || i == 1 || i == 2 %>
+				<% @relation1.each do |post| %>
+				<div class="col-md-4 col-sm-6">
+					<%= link_to post_path(post) do %>
+						<div class="related-post shadow">
+							<div class="post-image">
+								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
+							</div>
+							<div class="detail">
+								<p class="limit2"><%= post.title %></p>
+								<div class="post-footer" id="like-<%= post.id %>">
 
+									<%= render "users/posts/like", post: post %>
+
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
 				<% end %>
 			</div>
 		</div>
 		<div class="slider-2">
 			<div class="row">
-				<% if i == 3 || i == 4 || i == 5 %>
+				<% @relation2.each do |post| %>
+				<div class="col-md-4 col-sm-6">
+					<%= link_to post_path(post) do %>
+						<div class="related-post shadow">
+							<div class="post-image">
+								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
+							</div>
+							<div class="detail">
+								<p class="limit2"><%= post.title %></p>
+								<div class="post-footer" id="like-<%= post.id %>">
 
+									<%= render "users/posts/like", post: post %>
+
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
 				<% end %>
 			</div>
 		</div>
 		<div class="slider-3">
 			<div class="row">
-				<% if i == 6 || i == 7 || i == 8 %>
+				<% @relation3.each do |post| %>
+				<div class="col-md-4 col-sm-6">
+					<%= link_to post_path(post) do %>
+						<div class="related-post shadow">
+							<div class="post-image">
+								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
+							</div>
+							<div class="detail">
+								<p class="limit2"><%= post.title %></p>
+								<div class="post-footer" id="like-<%= post.id %>">
 
+									<%= render "users/posts/like", post: post %>
+
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
 				<% end %>
 			</div>
 		</div>
-	<% end %>
 </div>
 
 <div class="comment shadow">
