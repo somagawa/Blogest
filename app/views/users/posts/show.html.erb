@@ -1,6 +1,6 @@
 <div class="post-content shadow">
 	<div class="post-image">
-		<div>
+		<div id="slider1">
 			<% @post.post_images.each do |post_image| %>
 				<%= attachment_image_tag post_image, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
 			<% end %>
@@ -59,78 +59,29 @@
 				</tr>
 			</table>
 		</div>
+		<p class="relation-title">関連記事　"<%= @post.category.name %>"</p>
+		<div id="slider2">
+			<% @relation.each do |post| %>
+				<div class="slider-item">
+					<%= link_to post_path(post) do %>
+						<div class="related-post">
+							<div class="post-image">
+								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
+							</div>
+							<div class="detail">
+								<small class="limit2"><%= post.title %></small>
+								<div class="post-footer" id="like-<%= post.id %>">
+									<small class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></small>
+									<small><%= post.likes.count %></small>
+									<small style="margin-left: 8px;"><%= post.created_at.to_s(:datetime) %></small>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
 	</div>
-</div>
-<div class="related-posts shadow" id="slider">
-		<div class="slider-1">
-			<div class="row">
-				<% @relation1.each do |post| %>
-				<div class="col-md-4 col-sm-6">
-					<%= link_to post_path(post) do %>
-						<div class="related-post shadow">
-							<div class="post-image">
-								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
-							</div>
-							<div class="detail">
-								<p class="limit2"><%= post.title %></p>
-								<div class="post-footer" id="like-<%= post.id %>">
-
-									<%= render "users/posts/like", post: post %>
-
-								</div>
-							</div>
-						</div>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<div class="slider-2">
-			<div class="row">
-				<% @relation2.each do |post| %>
-				<div class="col-md-4 col-sm-6">
-					<%= link_to post_path(post) do %>
-						<div class="related-post shadow">
-							<div class="post-image">
-								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
-							</div>
-							<div class="detail">
-								<p class="limit2"><%= post.title %></p>
-								<div class="post-footer" id="like-<%= post.id %>">
-
-									<%= render "users/posts/like", post: post %>
-
-								</div>
-							</div>
-						</div>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
-		<div class="slider-3">
-			<div class="row">
-				<% @relation3.each do |post| %>
-				<div class="col-md-4 col-sm-6">
-					<%= link_to post_path(post) do %>
-						<div class="related-post shadow">
-							<div class="post-image">
-								<%= attachment_image_tag post.post_images[0], :image, :fill, 690, 420, format: "jpeg"%>
-							</div>
-							<div class="detail">
-								<p class="limit2"><%= post.title %></p>
-								<div class="post-footer" id="like-<%= post.id %>">
-
-									<%= render "users/posts/like", post: post %>
-
-								</div>
-							</div>
-						</div>
-					<% end %>
-				</div>
-				<% end %>
-			</div>
-		</div>
 </div>
 
 <div class="comment shadow">

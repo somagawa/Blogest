@@ -62,7 +62,20 @@
 }
 
 .creater-detail > .table {
+	margin: 20px 0 80px 0;
+}
+
+.relation-title {
+	font-size: 17px;
 	margin-top: 20px;
+	border-bottom: 1px solid gray;
+	font-weight: 600;
+}
+
+.related-post {
+	max-width: 200px;
+	height: 180px;
+	position: relative;
 }
 
 #img_prev:hover,
@@ -101,9 +114,15 @@
 	margin-bottom: 20px;
 }
 
-.slick-arrow {
-	display: none !important;
-}
+.slick-next {
+	right: 10px !important;
+	z-index: 100;
+ }
+
+.slick-prev {
+	left: 10px !important;
+  z-index: 100;
+ }
 
 .label {
 	display: inline-block !important;
