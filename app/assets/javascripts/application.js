@@ -48,9 +48,25 @@ $(function() {
 });
 
 $(function() {
-  $('#slider').slick({
+  $('#slider1').slick({
       dots: true,
       autoplay: true,
       autoplaySpeed: 4000,
+  });
+});
+
+$(function() {
+  $('#slider2').slick({
+      autoplay: true,
+      autoplaySpeed: 4000,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [{
+        breakpoint: 768, //ブレークポイントが768px
+        settings: {
+          slidesToShow: 2, //表示するスライドの数
+          slidesToScroll: 2, //スクロールで切り替わるスライドの数
+        }
+      }]
   });
 });

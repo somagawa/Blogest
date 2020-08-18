@@ -27,10 +27,7 @@ class Users::PostsController < ApplicationController
   def show
   	@post = Post.find(params[:id])
     @comment = Comment.new
-    @relation1 = Post.all.limit(3)
-    @relation2 = Post.all.offset(3).limit(3)
-    @relation3 = Post.all.offset(6).limit(3)
-
+    @relation = Post.where(category: @post.category).limit(9)
     address = @post.address
     @map = Geocoder.coordinates(address)
   end
