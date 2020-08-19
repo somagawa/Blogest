@@ -146,8 +146,7 @@ a:hover {
   height: 250px !important;
 }
 
-.post-item-mypage,
-.related-post {
+.post-item-mypage {
   height: 270px !important;
 }
 
@@ -231,6 +230,10 @@ a:hover {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
+}
+
+.related-post > .detail > .limit2 {
+  -webkit-line-clamp: 2;
 }
 
 .shadow {
