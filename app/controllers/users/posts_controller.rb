@@ -27,7 +27,7 @@ class Users::PostsController < ApplicationController
   def show
   	@post = Post.find(params[:id])
     @comment = Comment.new
-    @relation = Post.where(category: @post.category).limit(9)
+    @relation = Post.where(category: @post.category).where.not(id: @post).limit(9)
     address = @post.address
     @map = Geocoder.coordinates(address)
   end
