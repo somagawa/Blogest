@@ -48,7 +48,7 @@ jobs:
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
 
       # Database setup
-      - run: bundle exec rails db:create RAILS_ENV=test
+      - run: rails db:migrate RAILS_ENV=test
       - run: bundle exec rails db:migrate RAILS_ENV=test
 
       # run tests!
@@ -62,3 +62,12 @@ jobs:
       - store_artifacts:
           path: test-results
           destination: test-results
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+        filters:
+          branches:
+            only: master

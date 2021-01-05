@@ -14,7 +14,6 @@
   </head>
 
   <body>
-
     <% if current_page?(new_admin_session_path) %>
 
       <nav class="navbar navbar-inverse">
@@ -37,6 +36,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            
             <% if admin_signed_in? %>
               <%= link_to admins_users_path, class: "navbar-brand" do %>
                 <%= image_tag "logo.jpg", alt: "サブタイトル", width: "170px" %>
@@ -70,7 +70,6 @@
                 <li><%= link_to "ログイン", new_user_session_path %></li>
                 <li><%= link_to "新規登録", new_user_registration_path %></li>
               <% end %>
-
             </ul>
           </div>
         </div>
