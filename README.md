@@ -10,9 +10,6 @@ http://basyolog.net
 ### サイトテーマ
 気軽に楽しかった場所や有意義だった場所を発信したり、スポットを検索できます。
 
-### テーマを選んだ理由
-WEBアプリケーションとしては王道な「ブログ」を基盤に、独自性として「場所」に注目しました。
-
 ### ターゲットユーザ
 ・楽しかった場所、思い出を共有したい人
 ・スポットを探している人
@@ -20,22 +17,26 @@ WEBアプリケーションとしては王道な「ブログ」を基盤に、�
 ### 主な利用シーン
 旅行の計画時、友人と遊びに行く場所を探す時、デートスポットを探す時
 
-### 使用技術
-<h3>フロントエンド</h3>
-- HTML&CSS
+
+## 使用技術
+
+- HTML/CSS
 - Javascript
+- Ruby 2.5.7
+- Ruby on Rails 5.2.4.2
+- AWS(EC2、RDS) Amazon Linux AMI 2018.03
+- Docker 19.03.12
+- docker-compose 1.27.2
+- Rspec 3.9
+- MySQL 5.7
 
-<h3>バックエンド</h3>
-- Ruby
-- Ruby on Rails
 
-<h3>インフラ</h3>
-- AWS(EC2、RDS)
-- Docker、docker-compose
+## 工夫した点
 
-<h3>その他</h3>
-- Rspec
-- MySQL
+- 一部、非同期通信を使用し、ユーザーのストレスを軽減しました
+- Rspecを使用し、効率的なバグの検知を行いました
+- Dockerを使用し、簡単かつスピーディーな環境構築を可能にしました
+
 
 ## 主な機能
 - キーワード、住所、タグによるシームレスな検索
@@ -49,6 +50,7 @@ WEBアプリケーションとしては王道な「ブログ」を基盤に、�
 - フォロー機能
 - 地図表示機能
 
+
 ## 設計書
 - ER図
 https://drive.google.com/file/d/1PFTfvio3heCFniQRhC3ytIgJVDEz4yqT/view?usp=sharing
@@ -57,7 +59,8 @@ https://drive.google.com/file/d/16q3BsKG0lzQQkr5v94KDQt7YNNv3FxU-/view?usp=shari
 - アプリケーション詳細設計書
 https://drive.google.com/file/d/19lJfUPFqqljeZGzq6GQ5J3LVD_Jb8wcM/view?usp=sharing
 
-### 機能一覧
+
+## 機能一覧
 https://docs.google.com/spreadsheets/d/1dqCoy5gZYkliHLtHzWoDS5huSI74oz52TerJzSpxaDg/edit?usp=sharing
 
 
