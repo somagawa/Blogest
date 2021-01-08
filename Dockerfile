@@ -10,13 +10,10 @@ RUN mkdir /Basyolog
 
 WORKDIR /Basyolog
 
-ADD Gemfile /Basyolog/Gemfile
-ADD Gemfile.lock /Basyolog/Gemfile.lock
+COPY Gemfile /Basyolog/Gemfile
+COPY Gemfile.lock /Basyolog/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
 
-ADD . /Basyolog
-
-RUN mkdir -p tmp/sockets
-RUN mkdir -p tmp/pids
+COPY . /Basyolog
