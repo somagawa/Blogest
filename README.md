@@ -24,11 +24,12 @@ http://basyolog.net
 - Javascript
 - Ruby 2.5.7
 - Ruby on Rails 5.2.4.2
+- Rspec 3.9
+- MySQL 5.7
 - AWS(EC2、RDS) Amazon Linux AMI 2018.03
 - Docker 19.03.12
 - docker-compose 1.27.2
-- Rspec 3.9
-- MySQL 5.7
+- CircleCI
 
 
 ## 工夫した点
