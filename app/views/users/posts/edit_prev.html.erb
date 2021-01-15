@@ -8,11 +8,6 @@
 	</div>
 	<div class="post-text">
 		<h4><%= @post.title %></h4>
-		<div class="tag-list">
-			<% @post.tag_list.each do |tag| %>
-				<span class="badge badge-default"><%= tag %></span>
-			<% end %>
-		</div>
 		<p><%= @post.address %></p>
 		<div class="post-body">
 			<%= simple_format(@post.body) %>
@@ -24,7 +19,6 @@
 		<%= form_with model: @post, local: true do |f| %>
 			<%= f.hidden_field :post_images_images, :value => @post.post_images %>
 			<%= f.hidden_field :title, :value => @post.title %>
-			<%= f.hidden_field :tag_list, :value => @post.tag_list.join(',') %>
 			<%= f.hidden_field :body, :value => @post.body %>
 			<%= f.hidden_field :post_code, :value => @post.post_code %>
 			<%= f.hidden_field :address, :value => @post.address %>
