@@ -9,11 +9,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>
-							<% @tags.each do |tag| %>
-								<%= link_to tag, search_path(search_tag: @tag_form + "," + tag.name, keyword: @keyword_form, address: @address_form, category: @category_form, sort: @sort), class: "badge badge-default" %>
-							<% end %>
-						</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
@@ -26,10 +22,6 @@
 					<tr>
 						<td>キーワード</td>
 						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td>タグ</td>
-						<td colspan="3"><%= f.text_field :search_tag, value: @tag_form, class: "form-control" %></td>
 					</tr>
 					<tr>
 						<td>住所または地名</td>
@@ -58,9 +50,6 @@
 				<%= form_with url: search_path, method: :get, local: true do |f| %>
 					<tr>
 						<td colspan="3"><%= f.text_field :keyword, value: @keyword_form, placeholder: "キーワード", class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td colspan="3"><%= f.text_field :search_tag, value: @tag_form, placeholder: "タグ", class: "form-control" %></td>
 					</tr>
 					<tr>
 						<td colspan="3"><%= f.text_field :address, value: @address_form, placeholder: "住所または地名", class: "form-control" %></td>
@@ -93,16 +82,11 @@
 							</div>
 							<div class="detail">
 								<p class="limit2"><%= post.title %></p>
-								<div class="limit1">
-									<% post.tags.pluck(:name).each do |tag| %>
-										<%= link_to tag, search_path(search_tag: @tag_form + "," + tag, keyword: @keyword_form, address: @address_form, category: @category_form, sort: @sort), class: "badge badge-default" %>
-									<% end %>
+								<div class="post-footer" id="like-<%= post.id %>">
+
+									<%= render "users/posts/like", post: post %>
+
 								</div>
-									<div class="post-footer" id="like-<%= post.id %>">
-
-										<%= render "users/posts/like", post: post %>
-
-									</div>
 							</div>
 						</div>
 					<% end %>
