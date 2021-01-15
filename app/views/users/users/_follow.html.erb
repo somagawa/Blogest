@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 	<% if current_user != user %>
-		<% if user.followed_by?(current_user) %>
+		<% if user.passive_relationships.any?{ |relationship| relationship.following_id == current_user.id } %>
 			<% relationship = Relationship.find_by(following_id: current_user.id, follower_id: user.id) %>
 			<%= link_to relationship_path(relationship), method: :delete, remote: true, class: "btn btn-success" do %>
 			 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -14,7 +14,7 @@
 		<% end %>
 	<% end %>
 <% else %>
-	<%= link_to new_user_registration_path, class: "btn btn-outline-success" do %>
+	<%= link_to new_user_session_path, class: "btn btn-outline-success" do %>
 		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 		<span class="glyphicon glyphicon-plus" style="font-size: 10px;" aria-hidden="true"></span>
 	<% end %>

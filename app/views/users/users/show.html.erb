@@ -25,8 +25,8 @@
 				<td colspan="4"><%= simple_format(@user.introduction) %></td>
 			</tr>
 			<tr>
-				<td>フォロー　<%= @user.followings.count %></td>
-				<td colspan="2">フォロワー　<%= @user.followers.count %></td>
+				<td>フォロー　<%= @user.followings.size %></td>
+				<td colspan="2">フォロワー　<%= @user.followers.size %></td>
 			</tr>
 		</table>
 
@@ -92,8 +92,8 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="follow">フォロワー　<%= user.followings.count %></td>
-							<td class="follow">フォロー　<%= user.followers.count %></td>
+							<td class="follow">フォロワー　<%= user.followings.size %></td>
+							<td class="follow">フォロー　<%= user.followers.size %></td>
 						</tr>
 					</table>
 				<% end %>
