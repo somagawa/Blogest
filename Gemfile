@@ -71,8 +71,6 @@ gem 'jquery-rails'
 
 gem 'kaminari'
 
-gem 'acts-as-taggable-on', '~> 6.0'
-
 # GoogleMapAPI
 gem 'geocoder'
 # 環境変数
