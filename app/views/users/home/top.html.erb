@@ -90,13 +90,13 @@
 							<div class="detail">
 								<p class="limit2"><%= post.title %></p>
 								<div class="limit1">
-									<% post.tag_list.each do |tag| %>
+									<% post.tags.pluck(:name).each do |tag| %>
 										<%= link_to tag, search_path(search_tag: tag, category: "", sort: "新着順"), class: "badge badge-default" %>
 									<% end %>
 								</div>
 								<div class="post-footer" id="like-<%= post.id %>">
 									<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-									<span><%= post.likes.count %></span>
+									<span><%= post.likes.size %></span>
 									<span style="margin-left: 8px;"><%= post.created_at.to_s(:datetime) %></span>
 								</div>
 							</div>

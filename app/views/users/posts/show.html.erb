@@ -9,10 +9,10 @@
 	<div class="post-text">
 		<h4><%= @post.title %></h4>
 		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
-		<span><%= @post.likes.count %></span>
+		<span><%= @post.likes.size %></span>
 		<span style="margin-left: 8px;"><%= @post.created_at.to_s(:datetime) %></span>
 		<div class="tag-list">
-			<% @post.tag_list.each do |tag| %>
+			<% @post.tags.pluck(:name).each do |tag| %>
 				<%= link_to tag, search_path(search_tag: tag, category: "", sort: "新着順"), class: "badge badge-default" %>
 			<% end %>
 		</div>
@@ -54,8 +54,8 @@
 					<td colspan="3"><%= simple_format(@post.user.introduction) %></td>
 				</tr>
 				<tr>
-					<td>フォロー　<%= @post.user.followings.count %></td>
-					<td colspan="2">フォロワー　<%= @post.user.followers.count %></td>
+					<td>フォロー　<%= @post.user.followings.size %></td>
+					<td colspan="2">フォロワー　<%= @post.user.followers.size %></td>
 				</tr>
 			</table>
 		</div>
@@ -72,7 +72,7 @@
 								<small class="limit2"><%= post.title %></small>
 								<div class="post-footer" id="like-<%= post.id %>">
 									<small class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></small>
-									<small><%= post.likes.count %></small>
+									<small><%= post.likes.size %></small>
 									<small style="margin-left: 8px;"><%= post.created_at.to_s(:datetime) %></small>
 								</div>
 							</div>
@@ -85,7 +85,7 @@
 </div>
 
 <div class="comment shadow">
-	<p>コメント <%= @post.comments.count %>件</p>
+	<p>コメント <%= @post.comments.size %>件</p>
 
 	<%= render "users/posts/comments", post: @post %>
 
@@ -97,7 +97,7 @@
 			<% end %>
 		<% else %>
 			<%= image_tag "comment.jpg", alt: "サブタイトル", width: "100%" %>
-			<%= link_to "コメントする", new_user_registration_path, class: "btn btn-sm btn-primary", style: "margin-top: 10px;" %>
+			<%= link_to "コメントする", new_user_session_path, class: "btn btn-sm btn-primary", style: "margin-top: 10px;" %>
 		<% end %>
 	</div>
 </div>
