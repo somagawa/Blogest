@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <% if post.liked_by?(current_user) %>
+  <% if post.likes.any?{ |like| like.user_id == current_user.id } %>
     <% like = Like.find_by(user_id: current_user.id, post_id: post.id) %>
     <%= link_to like_path(like), method: :delete, remote: true do %>
       <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
@@ -9,12 +9,12 @@
       <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: gray;">
     <% end %>
   <% end %>
-  <span><%= post.likes.count %></span>
+  <span><%= post.likes.size %></span>
   <span style="margin-left: 12px;"><%= post.created_at.to_s(:datetime) %></span>
 <% else %>
-  <%= link_to new_user_registration_path do %>
+  <%= link_to new_user_session_path do %>
     <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
   <% end %>
-  <span><%= post.likes.count %></span>
+  <span><%= post.likes.size %></span>
   <span style="margin-left: 12px;"><%= post.created_at.to_s(:datetime) %></span>
 <% end %>
