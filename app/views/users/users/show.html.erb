@@ -7,7 +7,7 @@
 	<div class="mypage-bottom">
 		<table class="table">
 			<tr>
-				<td rowspan="3" class="profile-image-td position-top"><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, size: "80x80", format: "jpeg", fallback: "no_image.jpg" %></td>
+				<td rowspan="3" class="profile-image-td position-top"><%= attachment_image_tag @user, :profile_image, :fill, 160, 160, size: "80x80", format: "jpeg", fallback: "no_image.jpg" %></td>
 				<td colspan="2"><%= @user.name %></td>
 				<td align="right">
 					<% if @user == current_user %>
@@ -81,7 +81,7 @@
 						<tr>
 							<td rowspan="2" class="profile-image-td">
 								<%= link_to user_path(user) do %>
-									<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg", size: "60x60" %>
+									<%= attachment_image_tag user, :profile_image, :fill, 120, 120, format: "jpeg", fallback: "no_image.jpg", size: "60x60" %>
 								<% end %>
 							</td>
 							<td colspan="2"><%= user.name %></td>

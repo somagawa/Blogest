@@ -51,9 +51,9 @@ class Users::PostsController < ApplicationController
 
   def search
     if params[:sort] == "新着順"
-      @posts = Post.includes(:post_images, :tags, :likes).search(params[:keyword], params[:address], params[:category]).page(params[:page]).order(created_at: :desc)
+      @posts = Post.includes(:post_images, :likes).search(params[:keyword], params[:address], params[:category]).page(params[:page]).order(created_at: :desc)
     else
-      result = Post.includes(:post_images, :tags).search(params[:keyword], params[:address], params[:category])
+      result = Post.includes(:post_images).search(params[:keyword], params[:address], params[:category])
       @posts = result.ranking.page(params[:page])
     end
     @keyword_form = params[:keyword]
