@@ -17,7 +17,7 @@
 			<tr>
 				<td rowspan="5" class="position-top" style="width: 66px;">
 					<div class="image-field" onClick="$('#file').click()">
-						<%= attachment_image_tag @user, :profile_image, :fill, 90, 90, format: "jpeg", fallback: "prev_img_2.jpg", size: "90x90", id: "img_prev" %>
+						<%= attachment_image_tag @user, :profile_image, :fill, 180, 180, format: "jpeg", fallback: "prev_img_2.jpg", size: "90x90", id: "img_prev" %>
 					</div>
 					<%= f.attachment_field :profile_image, id: "file", style: "display: none;" %>
 				</td>

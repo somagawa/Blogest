@@ -2,7 +2,9 @@
 	<div class="post-image">
 		<div id="slider1">
 			<% @post.post_images.each do |post_image| %>
-				<%= attachment_image_tag post_image, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
+				<div class="slider-item">
+					<%= attachment_image_tag post_image, :image, :fill, 900, 600, format: "jpeg", class: "image" %>
+				</div>
 			<% end %>
 		</div>
 	</div>
@@ -35,7 +37,7 @@
 				<tr>
 					<td rowspan="3" class="profile-image-td position-top">
 						<%= link_to user_path(@post.user) do %>
-							<%= attachment_image_tag @post.user, :profile_image, :fill, 80, 80, size: "80x80", format: "jpeg", fallback: "no_image.jpg", class: "profile-image" %>
+							<%= attachment_image_tag @post.user, :profile_image, :fill, 160, 160, size: "80x80", format: "jpeg", fallback: "no_image.jpg", class: "profile-image" %>
 						<% end %>
 					</td>
 					<td colspan="2"><%= @post.user.name %></td>
