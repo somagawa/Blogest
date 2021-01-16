@@ -3,7 +3,7 @@
 		<div id="slider1">
 			<% @post.post_images.each do |post_image| %>
 				<div class="slider-item">
-					<%= attachment_image_tag post_image, :image, :fill, 900, 600, format: "jpeg", class: "image" %>
+					<%= attachment_image_tag post_image, :image, :fill, 1200, 800, format: "jpeg", class: "image" %>
 				</div>
 			<% end %>
 		</div>
@@ -13,7 +13,6 @@
 		<span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
 		<span><%= @post.likes.size %></span>
 		<span style="margin-left: 8px;"><%= @post.created_at.to_s(:datetime) %></span>
-		<p><%= @post.address %></p>
 		<% if @post.user == current_user %>
 			<div class="edit-destroy-button" align="right">
 				<%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
@@ -24,7 +23,7 @@
 			<%= simple_format(@post.body) %>
 		</div>
 
-		<h4><%= @post.address %></h4>
+		<h5><%= @post.address %></h5>
 		<div id="map" style="height: 300px; background-image: url(<%= asset_path "no_map_img.jpg" %>); background-size: cover;"></div>
 
 		<div class="post-content-footer" id="like-<%= @post.id %>">

@@ -10,17 +10,8 @@
 				<% @post_ranks.each_with_index do |post_rank, i| %>
 				<tr>
 					<td style="width: 30px;">
-						<% if i == 0 %>
-							<%= image_tag "1.jpg", alt: "サブタイトル", width: "20px" %>
-						<% elsif i == 1 %>
-							<%= image_tag "2.jpg", alt: "サブタイトル", width: "20px" %>
-						<% elsif i == 2 %>
-							<%= image_tag "3.jpg", alt: "サブタイトル", width: "20px" %>
-						<% elsif i == 3 %>
-							<%= image_tag "4.jpg", alt: "サブタイトル", width: "20px" %>
-						<% else %>
-							<%= image_tag "5.jpg", alt: "サブタイトル", width: "20px" %>
-						<% end %>
+						<%= image_tag "#{i + 1}.jpg", alt: "サブタイトル", width: "20px" %>
+					</td>
 					<td>
 						<%= link_to post_rank.title, post_path(post_rank), class: "limit1" %>
 					</td>
@@ -38,17 +29,7 @@
 				<% @users.each_with_index do |user, i| %>
 				<tr>
 					<td style="width: 30px;">
-						<% if i == 0 %>
-							<%= image_tag "1.jpg", alt: "サブタイトル", width: "20px" %>
-						<% elsif i == 1 %>
-							<%= image_tag "2.jpg", alt: "サブタイトル", width: "20px" %>
-						<% elsif i == 2 %>
-							<%= image_tag "3.jpg", alt: "サブタイトル", width: "20px" %>
-						<% elsif i == 3 %>
-							<%= image_tag "4.jpg", alt: "サブタイトル", width: "20px" %>
-						<% else %>
-							<%= image_tag "5.jpg", alt: "サブタイトル", width: "20px" %>
-						<% end %>
+						<%= image_tag "#{i + 1}.jpg", alt: "サブタイトル", width: "20px" %>
 					</td>
 					<td>
 						<%= link_to user.name, user_path(user), class: "limit1" %>
@@ -58,26 +39,10 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="side-bar col-md-2 col-md-push-7">
-		<div class="tag-rank shadow">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>人気タグ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<div class="post-list col-md-7 col-md-pull-2">
+	<div class="post-list col-md-9">
 		<div class="row">
 			<% @posts.each do |post| %>
-				<div class="col-lg-4 col-md-6 col-sm-4">
+				<div class="col-sm-4">
 					<%= link_to post_path(post) do %>
 						<div class="post-item shadow">
 							<div class="post-image">

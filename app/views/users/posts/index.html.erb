@@ -1,100 +1,106 @@
-<div class="row">
-	<div class="side-bar col-sm-3 col-sm-push-9">
-		<div class="tag-rank shadow">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>人気タグ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+<div class="main-content">
+	<div class="search-form-1">
+		<table class="table">
+			<%= form_with url: search_path, method: :get, local: true do |f| %>
+				<tr>
+					<td><%= f.label :keyword, "キーワード" %></td>
+					<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :address, "住所または地名" %></td>
+					<td colspan="4"><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :category, "ジャンル" %></td>
+					<td><%= f.collection_select :category, Category.all, :id, :name, { include_blank: "--ジャンル--", selected: @category_form}, { class: "form-control" } %></td>
+
+				<% if @sort == "新着順" %>
+					<td style="text-align: right;">
+						<%= f.radio_button :sort, "新着順", checked: true %>
+						<%= f.label :sort_新着順, "新着順" %>
+					</td>
+					<td style="text-align: right;">
+						<%= f.radio_button :sort, "いいね順" %>
+						<%= f.label :sort_いいね順, "いいね順" %>
+					</td>
+
+				<% else %>
+					<td style="text-align: right;">
+						<%= f.radio_button :sort, "新着順" %>
+						<%= f.label :sort_新着順, "新着順" %>
+					</td>
+					<td style="text-align: right;">
+						<%= f.radio_button :sort, "いいね順", checked: true %>
+						<%= f.label :sort_いいね順, "いいね順" %>
+					</td>
+				
+				<% end %>
+					<td style="text-align: right;"><%= f.submit "検索", class: "btn btn-primary" %></td>
+				</tr>
+			<% end %>
+		</table>
 	</div>
-	<div class="main-content col-sm-9 col-sm-pull-3">
-		<div class="search-form-1">
-			<table class="table">
-				<%= form_with url: search_path, method: :get, local: true do |f| %>
-					<tr>
-						<td>キーワード</td>
-						<td colspan="2"><%= f.text_field :keyword, value: @keyword_form, class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td>住所または地名</td>
-						<td colspan="4"><%= f.text_field :address, value: @address_form, class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td>ジャンル</td>
-						<td><%= f.collection_select :category, Category.all, :id, :name, { include_blank: "--ジャンル--", selected: @category_form}, { class: "form-control" } %></td>
+	<div class="search-form-2">
+		<table class="table">
+			<%= form_with url: search_path, method: :get, local: true do |f| %>
+				<tr>
+					<td colspan="3"><%= f.text_field :keyword, value: @keyword_form, placeholder: "キーワード", class: "form-control" %></td>
+				</tr>
+				<tr>
+					<td colspan="3"><%= f.text_field :address, value: @address_form, placeholder: "住所または地名", class: "form-control" %></td>
+				</tr>
+				<tr>
+					<td colspan="3"><%= f.collection_select :category, Category.all, :id, :name, { include_blank: "--ジャンル--", selected: @category_form}, { class: "form-control" } %></td>
+				</tr>
+				<tr>
+				<% if @sort == "新着順" %>
+					<td>
+						<%= f.radio_button :sort, "新着順", checked: true %>
+						<%= f.label :sort_新着順, "新着順" %>
+					</td>
+					<td>
+						<%= f.radio_button :sort, "いいね順" %>
+						<%= f.label :sort_いいね順, "いいね順" %>
+					</td>
 
-					<% if @sort == "新着順" %>
-						<td style="text-align: right;"><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
-						<td style="text-align: right;"><%= f.radio_button :sort, "いいね順" %> いいね順</td>
-
-					<% else %>
-						<td style="text-align: right;"><%= f.radio_button :sort, "新着順" %> 新着順</td>
-						<td style="text-align: right;"><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
-
-					<% end %>
-						<td style="text-align: right;"><%= f.submit "検索", class: "btn btn-primary" %></td>
-					</tr>
+				<% else %>
+					<td>
+						<%= f.radio_button :sort, "新着順" %>
+						<%= f.label :sort_新着順, "新着順" %>
+					</td>
+					<td>
+						<%= f.radio_button :sort, "いいね順", checked: true %>
+						<%= f.label :sort_いいね順, "いいね順" %>
+					</td>
+				
 				<% end %>
-			</table>
-		</div>
-		<div class="search-form-2">
-			<table class="table">
-				<%= form_with url: search_path, method: :get, local: true do |f| %>
-					<tr>
-						<td colspan="3"><%= f.text_field :keyword, value: @keyword_form, placeholder: "キーワード", class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td colspan="3"><%= f.text_field :address, value: @address_form, placeholder: "住所または地名", class: "form-control" %></td>
-					</tr>
-					<tr>
-						<td colspan="3"><%= f.collection_select :category, Category.all, :id, :name, { include_blank: "--ジャンル--", selected: @category_form}, { class: "form-control" } %></td>
-					</tr>
-					<tr>
-					<% if @sort == "新着順" %>
-						<td><%= f.radio_button :sort, "新着順", checked: true %> 新着順</td>
-						<td><%= f.radio_button :sort, "いいね順" %> いいね順</td>
+					<td align="right"><%= f.submit "検索", class: "btn btn-primary" %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	<div class="row">
+		<% @posts.each do |post| %>
+			<div class="col-sm-4">
+				<%= link_to post_path(post) do %>
+					<div class="post-item shadow">
+						<div class="post-image">
+							<%= attachment_image_tag post.post_images[0], :image, :fill, 1050, 630, format: "jpeg", class: "image" %>
+						</div>
+						<div class="detail">
+							<p class="limit2"><%= post.title %></p>
+							<div class="post-footer" id="like-<%= post.id %>">
 
-					<% else %>
-						<td><%= f.radio_button :sort, "新着順" %> 新着順</td>
-						<td><%= f.radio_button :sort, "いいね順", checked: true %> いいね順</td>
+								<%= render "users/posts/like", post: post %>
 
-					<% end %>
-						<td align="right"><%= f.submit "検索", class: "btn btn-primary" %></td>
-					</tr>
-				<% end %>
-			</table>
-		</div>
-		<div class="row">
-			<% @posts.each do |post| %>
-				<div class="col-md-4 col-sm-6">
-					<%= link_to post_path(post) do %>
-						<div class="post-item shadow">
-							<div class="post-image">
-								<%= attachment_image_tag post.post_images[0], :image, :fill, 525, 315, format: "jpeg", class: "image" %>
-							</div>
-							<div class="detail">
-								<p class="limit2"><%= post.title %></p>
-								<div class="post-footer" id="like-<%= post.id %>">
-
-									<%= render "users/posts/like", post: post %>
-
-								</div>
 							</div>
 						</div>
-					<% end %>
-				</div>
-			<% end %>
-		</div>
-		<div class="pagenation" align="center">
-			<%= paginate @posts, class: "paginate" %>
-		</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+	<div class="pagenation" align="center">
+		<%= paginate @posts, class: "paginate" %>
 	</div>
 </div>
