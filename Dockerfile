@@ -9,7 +9,6 @@ WORKDIR /Basyolog
 COPY Gemfile /Basyolog/Gemfile
 COPY Gemfile.lock /Basyolog/Gemfile.lock
 
-RUN gem install bundler
 RUN bundle install
 
 COPY . /Basyolog
