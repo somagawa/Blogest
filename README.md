@@ -5,7 +5,7 @@
 ## サイト概要
 ばしょログは共有したいスポットを記事として投稿することができます。また遊ぶ場所を探したり、旅行の計画を立てる時に、他の投稿者の記事を参考にすることもできます。
 
-[link](http://basyolog.net){:target="_blank"}
+<a href="http://basyolog.net" target="_blank">http://basyolog.net</a>
 
 - テストユーザー (記事投稿、コメント、いいね、フォロー意外はログイン必要なし)<br>
  ログインID : test@test<br>
