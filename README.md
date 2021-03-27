@@ -29,7 +29,7 @@ http://basyolog.net
 - Ruby on Rails 5.2.4.2
 - Rspec 3.9
 - MySQL 5.7
-- AWS(EC2、RDS) Amazon Linux AMI 2018.03
+- AWS(EC2・RDS) Amazon Linux AMI 2018.03
 - Docker 19.03.12
 - docker-compose 1.27.2
 - CircleCI
@@ -37,8 +37,8 @@ http://basyolog.net
 
 ## 工夫した点
 
-- 一部、<b>非同期通信</b>を使用し、ユーザーのストレスを軽減しました（いいね、フォロー、コメント）
-- <b>GoogleMapAPI</b>による地図表示で直感的な場所の特定を可能にしました
+- 一部、<b>非同期通信</b>を使用し、ユーザーのストレスを軽減しました（いいね・フォロー・コメント）
+- <b>Google Maps API</b>による地図表示で直感的な場所の特定を可能にしました
 - <b>Rspec(Capybara)</b>を使用し、効率的なバグの検知を行いました
 - <b>N+1問</b>題を意識し、パフォーマンスを向上させました
 - <b>Docker</b>を使用し、簡単かつスピーディーな環境構築を可能にしました
